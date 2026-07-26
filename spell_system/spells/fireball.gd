@@ -2,7 +2,7 @@ class_name Fireball extends Spell
 
 @onready var explosion: Area2D = $Explosion
 
-var speed: int = 800
+var speed: int = 200
 var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
