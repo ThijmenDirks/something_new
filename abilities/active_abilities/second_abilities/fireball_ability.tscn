@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://6frfb5m4tv00"]
+
+[ext_resource type="Script" uid="uid://c3yiakny2k8p5" path="res://abilities/active_abilities/second_abilities/fireball_ability.gd" id="1_eya5o"]
+
+[node name="FireballAbility" type="Node2D" unique_id=1188303989]
+script = ExtResource("1_eya5o")
+allows_spellcasting = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1265645681]
+wait_time = 5.0
+one_shot = true

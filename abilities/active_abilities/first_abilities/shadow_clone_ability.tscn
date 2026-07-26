@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://golq8l7b6dme"]
+
+[ext_resource type="Script" uid="uid://c5sl2kn4kjwuf" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.gd" id="1_ik5t0"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_riwqr"]
+[ext_resource type="PackedScene" uid="uid://dg35hfo8ls13f" path="res://abilities/active_abilities/first_abilities/shadow_clone.tscn" id="3_asgsa"]
+
+[node name="ShadowCloneAbility" type="Node2D" unique_id=2123557379]
+script = ExtResource("1_ik5t0")
+
+[node name="SelectLogo" type="Sprite2D" parent="." unique_id=755450509]
+visible = false
+texture = ExtResource("2_riwqr")
+
+[node name="ShadowClone" parent="." unique_id=1262794763 instance=ExtResource("3_asgsa")]
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1339639294]
+wait_time = 5.0
+one_shot = true

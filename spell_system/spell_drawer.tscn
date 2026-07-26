@@ -1,0 +1,323 @@
+[gd_scene format=3 uid="uid://bni0imv6noqlc"]
+
+[ext_resource type="Script" uid="uid://2e0gr1hmqqhs" path="res://spell_system/spell_drawer.gd" id="1_pouav"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_1dfj0"]
+[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="3_1dfj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0eqq"]
+radius = 100.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_txv2i"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ehjj"]
+font_size = 64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_txv2i"]
+
+[node name="SpellDrawer" type="Control" unique_id=1961721061 node_paths=PackedStringArray("control")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pouav")
+control = NodePath("VBoxContainer/Control")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1905481598]
+visible = false
+texture = ExtResource("2_1dfj0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=269024234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=1912604537]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=516277503]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=246034321]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control1" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=1659292234]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="1" type="Area2D" parent="VBoxContainer/HBoxContainer2/Control1" unique_id=1689440142]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer2/Control1/1" unique_id=1931567823]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Control1" unique_id=942191604]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "top left"
+label_settings = SubResource("LabelSettings_txv2i")
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=537072454]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="2" type="Area2D" parent="VBoxContainer/HBoxContainer2/Control2" unique_id=1861155435]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer2/Control2/2" unique_id=1979662056]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=382591571]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="3" type="Area2D" parent="VBoxContainer/HBoxContainer2/Control3" unique_id=1733973292]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer2/Control3/3" unique_id=96858219]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control4" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=766006055]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="4" type="Area2D" parent="VBoxContainer/HBoxContainer2/Control4" unique_id=857686552]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer2/Control4/4" unique_id=625980945]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1285228619]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer3" unique_id=1240172004]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control5" type="Control" parent="VBoxContainer/HBoxContainer3" unique_id=306875089]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="5" type="Area2D" parent="VBoxContainer/HBoxContainer3/Control5" unique_id=1256401747]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer3/Control5/5" unique_id=610881283]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control6" type="Control" parent="VBoxContainer/HBoxContainer3" unique_id=1867248828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="6" type="Area2D" parent="VBoxContainer/HBoxContainer3/Control6" unique_id=280577557]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer3/Control6/6" unique_id=1324118465]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control7" type="Control" parent="VBoxContainer/HBoxContainer3" unique_id=916896488]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="7" type="Area2D" parent="VBoxContainer/HBoxContainer3/Control7" unique_id=1364188984]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer3/Control7/7" unique_id=2137049963]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control8" type="Control" parent="VBoxContainer/HBoxContainer3" unique_id=400687547]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="8" type="Area2D" parent="VBoxContainer/HBoxContainer3/Control8" unique_id=1696111817]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer3/Control8/8" unique_id=355879090]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=192849484]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer4" unique_id=1253988256]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control9" type="Control" parent="VBoxContainer/HBoxContainer4" unique_id=1105783013]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="9" type="Area2D" parent="VBoxContainer/HBoxContainer4/Control9" unique_id=1608204355]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer4/Control9/9" unique_id=679341123]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control10" type="Control" parent="VBoxContainer/HBoxContainer4" unique_id=60631503]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="10" type="Area2D" parent="VBoxContainer/HBoxContainer4/Control10" unique_id=2010547646]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer4/Control10/10" unique_id=18828259]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control11" type="Control" parent="VBoxContainer/HBoxContainer4" unique_id=211085384]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="11" type="Area2D" parent="VBoxContainer/HBoxContainer4/Control11" unique_id=994309263]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer4/Control11/11" unique_id=1246370437]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control12" type="Control" parent="VBoxContainer/HBoxContainer4" unique_id=541602992]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="12" type="Area2D" parent="VBoxContainer/HBoxContainer4/Control12" unique_id=325873769]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer4/Control12/12" unique_id=1097939622]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=2100516071]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer5" unique_id=1033180432]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control13" type="Control" parent="VBoxContainer/HBoxContainer5" unique_id=96826375]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="13" type="Area2D" parent="VBoxContainer/HBoxContainer5/Control13" unique_id=1906256017]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer5/Control13/13" unique_id=1121467105]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control14" type="Control" parent="VBoxContainer/HBoxContainer5" unique_id=1901591366]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="14" type="Area2D" parent="VBoxContainer/HBoxContainer5/Control14" unique_id=1381230495]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer5/Control14/14" unique_id=1376352297]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control15" type="Control" parent="VBoxContainer/HBoxContainer5" unique_id=634900748]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="15" type="Area2D" parent="VBoxContainer/HBoxContainer5/Control15" unique_id=998731230]
+position = Vector2(0, -8)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer5/Control15/15" unique_id=1230073261]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Control16" type="Control" parent="VBoxContainer/HBoxContainer5" unique_id=1396648531]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="16" type="Area2D" parent="VBoxContainer/HBoxContainer5/Control16" unique_id=1197514295]
+position = Vector2(0, -12)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer5/Control16/16" unique_id=1032177779]
+shape = SubResource("CircleShape2D_d0eqq")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/Control16" unique_id=620735787]
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 23.0
+text = "bottom right"
+label_settings = SubResource("LabelSettings_0ehjj")
+
+[node name="Particles" type="Node2D" parent="." unique_id=662915921]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1508331280]
+emitting = false
+amount = 999
+texture = ExtResource("3_1dfj0")
+lifetime = 3.0
+speed_scale = 0.1
+color = Color(0.21176471, 0.3019608, 1, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1671141002]
+exclude_parent = false
+collision_mask = 8
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1291507076]
+wait_time = 99.0
+one_shot = true
+
+[node name="FingerArea" type="Area2D" parent="." unique_id=1958149361]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FingerArea" unique_id=1980143791]
+shape = SubResource("CircleShape2D_txv2i")
+
+[node name="Icon2" type="Sprite2D" parent="FingerArea/CollisionShape2D" unique_id=1777342181]
+texture = ExtResource("2_1dfj0")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

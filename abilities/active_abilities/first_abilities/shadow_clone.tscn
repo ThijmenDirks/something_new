@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dg35hfo8ls13f"]
+
+[ext_resource type="Script" uid="uid://cjvijnip7rh76" path="res://abilities/active_abilities/first_abilities/shadow_clone.gd" id="1_hkgcy"]
+[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_fxhi5"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="3_hrwnn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u22c8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fxhi5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hrwnn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7weiq"]
+radius = 70.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdxn2"]
+properties/0/path = NodePath("AnimatedSprite2D:frame")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="ShadowClone" type="CharacterBody2D" unique_id=1262794763]
+visible = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hkgcy")
+metadata/velocity_offset = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=573563450]
+sprite_frames = SubResource("SpriteFrames_u22c8")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1081915772]
+shape = SubResource("CircleShape2D_7weiq")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1923968447]
+replication_config = SubResource("SceneReplicationConfig_wdxn2")

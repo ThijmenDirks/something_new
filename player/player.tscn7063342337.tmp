@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bbb6uhyhkrkuo"]
+
+[ext_resource type="Script" uid="uid://cp6o0egq4smi0" path="res://player/player.gd" id="1_gwnis"]
+[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_k53q1"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="3_fhl08"]
+[ext_resource type="PackedScene" uid="uid://hlmbv2124ne5" path="res://player/interface.tscn" id="4_vtle1"]
+[ext_resource type="PackedScene" uid="uid://vqh7pbef8do5" path="res://weapons/melee_weapon.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://golq8l7b6dme" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.tscn" id="6_boad6"]
+[ext_resource type="PackedScene" uid="uid://clnan45f7lshk" path="res://abilities/pasive_abilities/invis_escape.tscn" id="6_g6k8r"]
+[ext_resource type="Script" uid="uid://dmtih1gvgliow" path="res://spell_system/spell_cast_system.gd" id="8_rgyib"]
+[ext_resource type="PackedScene" uid="uid://bni0imv6noqlc" path="res://spell_system/spell_drawer.tscn" id="9_hg6s5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k53q1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fhl08")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 70.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
+properties/0/path = NodePath("AnimatedSprite2D:frame")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("SpeechLabel:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:sync_pos")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="FontFile" id="FontFile_i3pqv"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqtel"]
+font = SubResource("FontFile_i3pqv")
+font_size = 32
+
+[node name="Player" type="CharacterBody2D" unique_id=1913585745 node_paths=PackedStringArray("animated_sprite_2d")]
+collision_mask = 4
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_gwnis")
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=946073209]
+sprite_frames = SubResource("SpriteFrames_hqtel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306227823]
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Player ID" type="Label" parent="." unique_id=1785810738]
+offset_left = -35.0
+offset_top = -90.0
+offset_right = 35.0
+offset_bottom = -67.0
+text = "Player ID"
+metadata/_edit_use_anchors_ = true
+
+[node name="HPBar" type="TextureProgressBar" parent="." unique_id=1359473369]
+offset_left = -65.0
+offset_top = -142.0
+offset_right = 65.0
+offset_bottom = -113.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_fhl08")
+texture_progress = ExtResource("3_fhl08")
+tint_under = Color(1, 0, 0, 1)
+tint_progress = Color(0.3882353, 1, 0, 1)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1042942546]
+replication_interval = 0.025
+replication_config = SubResource("SceneReplicationConfig_onrkg")
+visibility_update_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1857340609]
+position = Vector2(-1, -1)
+
+[node name="SpeechLabel" type="Label" parent="." unique_id=1946821061]
+offset_left = -19.0
+offset_top = -138.0
+offset_right = 21.0
+offset_bottom = -115.0
+label_settings = SubResource("LabelSettings_hqtel")
+
+[node name="Interface" parent="." unique_id=1274981009 instance=ExtResource("4_vtle1")]
+
+[node name="Items" type="Node2D" parent="." unique_id=1893416913]
+
+[node name="RightHand" type="Node2D" parent="Items" unique_id=479551944]
+
+[node name="MeleeWeapon" parent="Items/RightHand" unique_id=1970914476 instance=ExtResource("5_qjkh3")]
+
+[node name="LeftHand" type="Node2D" parent="Items" unique_id=1752825588]
+
+[node name="Abilities" type="Node2D" parent="." unique_id=1257077829]
+
+[node name="FirstAbility" type="Node2D" parent="Abilities" unique_id=1075931572]
+
+[node name="ShadowCloneAbility" parent="Abilities/FirstAbility" unique_id=2123557379 instance=ExtResource("6_boad6")]
+
+[node name="SecondAbility" type="Node2D" parent="Abilities" unique_id=1666756119]
+
+[node name="PassiveAbility" type="Node2D" parent="Abilities" unique_id=288699166]
+
+[node name="InvisEscape" parent="Abilities/PassiveAbility" unique_id=1045013220 instance=ExtResource("6_g6k8r")]
+
+[node name="SpellCastSystem" type="Node2D" parent="." unique_id=1210108270]
+script = ExtResource("8_rgyib")
+
+[node name="CastSpellButton" type="Button" parent="." unique_id=1950143496]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "cast a spell
+(this button needs antoher place in scene tree)"
+
+[node name="SpellDrawer" parent="." unique_id=1961721061 instance=ExtResource("9_hg6s5")]
+
+[connection signal="pressed" from="CastSpellButton" to="SpellCastSystem" method="_on_cast_spell_button_pressed"]

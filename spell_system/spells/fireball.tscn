@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dsxug0ov6dms5"]
+
+[ext_resource type="Script" uid="uid://gv7hlte58g2y" path="res://spell_system/spells/fireball.gd" id="1_3ioec"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_b22ur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b22ur"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_st645"]
+radius = 155.12898
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b22ur"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Fireball" type="Area2D" unique_id=561865316]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_3ioec")
+input_code = Array[int]([5, 6])
+is_aimable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=68522582]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_b22ur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1583400956]
+shape = SubResource("CircleShape2D_b22ur")
+
+[node name="Explosion" type="Area2D" parent="." unique_id=626126686]
+visible = false
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion" unique_id=756540874]
+shape = SubResource("CircleShape2D_st645")
+
+[node name="Sprite2D" type="Sprite2D" parent="Explosion" unique_id=729317801]
+scale = Vector2(2, 2)
+texture = ExtResource("2_b22ur")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1075635516]
+replication_config = SubResource("SceneReplicationConfig_b22ur")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

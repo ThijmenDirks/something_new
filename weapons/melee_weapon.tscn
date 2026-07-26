@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://vqh7pbef8do5"]
+
+[ext_resource type="Script" uid="uid://brvq28r1spkf7" path="res://weapons/melee_weapon.gd" id="1_45di4"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_j23ck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45di4"]
+radius = 116.03879
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_j23ck"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="MeleeWeapon" type="Area2D" unique_id=1970914476]
+collision_layer = 2
+script = ExtResource("1_45di4")
+max_damage = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686135387]
+shape = SubResource("CircleShape2D_45di4")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1710603660]
+position = Vector2(52, 0)
+scale = Vector2(1, 0.2)
+texture = ExtResource("2_j23ck")
+
+[node name="Timer" type="Timer" parent="." unique_id=617069914]
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1471518830]
+replication_config = SubResource("SceneReplicationConfig_j23ck")
