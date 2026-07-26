@@ -59,4 +59,8 @@ texture = ExtResource("2_ehm64")
 offset_right = 541.0
 offset_bottom = 146.0
 
+[node name="Panel" type="Panel" parent="." unique_id=982799090]
+offset_right = 1933.0
+offset_bottom = 1077.0
+
 [connection signal="pressed" from="CastSpellButton" to="." method="_on_cast_spell_button_pressed"]

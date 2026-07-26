@@ -1,3 +1,4 @@
 res://player/player.tscn
 res://assets/theme.tres
 res://spell_system/spells/fireball.gd
+res://player/interface.tscn
