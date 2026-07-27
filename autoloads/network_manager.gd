@@ -1,4 +1,7 @@
 extends Node
+#O&O reserved IP: 192.168.2.8
+# "home" reserved IP: idk
+
 
 # Autoload named Network Manager
 
@@ -7,8 +10,8 @@ signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
-const PORT = 35_000
-const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost, replace with server
+var PORT = 35432#35_000
+var DEFAULT_SERVER_IP = "192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
 const MAX_CONNECTIONS = 5
 
 # This will contain player info for every player,

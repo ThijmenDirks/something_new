@@ -18,6 +18,7 @@ func _ready() -> void:
 		port = 30_000
 	else:
 		port = 40_000
+	port = 35432
 
 	$MainMenuStuff/Port.text = str(port)
 	players_joined_label.visible = false
