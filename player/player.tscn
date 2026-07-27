@@ -159,7 +159,8 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1417697596]
-position = Vector2(104, -333)
+position = Vector2(466.50003, -225.49998)
+scale = Vector2(7.320312, 4.1171875)
 texture = ExtResource("3_fhl08")
 
 [node name="Icon2" type="Sprite2D" parent="." unique_id=220568098]
