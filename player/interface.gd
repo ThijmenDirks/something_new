@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var chat_label_container: VBoxContainer = $Interface/Panel/ChatLabelContainer
+@onready var ping_label: Label = $PingLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

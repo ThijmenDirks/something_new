@@ -2,8 +2,8 @@ class_name Player extends CharacterBody2D
 
 @onready var interface: Node = $Interface
 @onready var speech_label: Label = $SpeechLabel
-@onready var line_edit: LineEdit = $Interface/Interface/Panel/VBoxContainer/LineEdit
-@onready var chat: VBoxContainer = $Interface/Interface/Panel/VBoxContainer
+@onready var line_edit: LineEdit = $Interface/Interface/Panel/ChatLabelContainer/LineEdit
+@onready var chat: VBoxContainer = $Interface/Interface/Panel/ChatLabelContainer
 @onready var spell_cast_system: Node2D = $SpellCastSystem
 
 @export var animated_sprite_2d: AnimatedSprite2D# = $AnimatedSprite2D
@@ -87,6 +87,7 @@ func update_movement(new_position: Array) -> void:
 		global_position = new_position[0]
 
 func _input(event: InputEvent) -> void:
+	# make something that makes the player not move when typing one of [w,a,s,d]
 	if is_multiplayer_authority():
 		if Input.is_action_just_pressed("enter_chat") and not line_edit.has_focus():
 			line_edit.visible = true
@@ -168,22 +169,28 @@ func start_casting_spell(limited_spell_list: Array[Dictionary] = []):
 	spell_cast_system.start_casting_spell(limited_spell_list)
 
 func send_message(message: String):
-	speech_label.text = message
+	speech_label.text = message # the text is being managed by a MultiplayerSynchronizer
+	for player: Node in get_parent().get_children():
+		if player is Player and not player == self:
+			player.update_chat.rpc_id(player.get_multiplayer_authority())
 	update_chat.rpc(message)
 
 	await get_tree().create_timer(message.length() * 0.5).timeout
 	speech_label.text = ""
 
 @rpc("any_peer", "call_local")
-func update_chat(message):
-	for i: Node in get_parent().get_children():
-		if i is CharacterBody2D:
-			if i.is_multiplayer_authority():
+func update_chat(message: String):
+	for player: Node in get_parent().get_children():
+		if player is Player:
+			if player.is_multiplayer_authority():
 				#pass
 				var new_label = Label.new()#load("uid://c1w3kuwsult0e").instantiate()
 				new_label.text = message
-				i.chat.get_child(-2).add_sibling(new_label)
-				new_label.position.x += 30
+				#if is_instance_valid(player.get_node("Interface/Interface/Panel/VBoxContainer")):
+				if is_instance_valid(player.interface) or true:
+					print("test: ", message, " interface: ", player.interface)
+					player.interface.chat_label_container.get_child(-2).add_sibling(new_label)
+					#new_label.position.x += 30
 
 func _on_player_disconnected(pid) -> void:
 	if pid == int(name):
@@ -192,11 +199,13 @@ func _on_player_disconnected(pid) -> void:
 
 
 @onready var ping_timer: Timer = $PingTimer
-# the times wait time is 10 sec
+# the timers wait time is 10 sec
 
 var ping: float
 var control_value: int
 var received_ping: bool = true
+var ping_send_time: int
+#var ping_receive_time: int
 
 func _process(delta: float) -> void:
 	if multiplayer.is_server():
@@ -205,23 +214,34 @@ func _process(delta: float) -> void:
 			ping_measure_sender()
 
 func ping_measure_sender():
+	if not multiplayer.is_server():
+		return
 	control_value = randi_range(100_000, 999_999)
-	ping_timer.start()
+	ping_send_time = Time.get_ticks_usec()
 	ping_measure_at_player.rpc_id(get_multiplayer_authority(), control_value)
+	#ping_measure_at_player.rpc(control_value)
 
 @rpc("any_peer", "call_local")
-func ping_measure_at_player(control_value):
-	if multiplayer.get_remote_sender_id() == 1:
-		ping_measure_receiver.rpc_id(1, control_value)
+func ping_measure_at_player(received_control_value: int):
+	if multiplayer.get_remote_sender_id() == 1 and is_multiplayer_authority():
+		ping_measure_receiver.rpc_id(1, received_control_value)
 
-@rpc("call_local")
-func ping_measure_receiver(received_control_value):
+@rpc("authority", "call_local")
+func ping_measure_receiver(received_control_value: int):
 	if not multiplayer.is_server():
 		return
 	if received_control_value == control_value:
-		ping_timer.stop()
-		ping = 10 - ping_timer.time_left
+		ping = Time.get_ticks_usec() - ping_send_time
+		var ping_msec = ping/1000
 		received_ping = true
+		update_ping_label.rpc_id(get_multiplayer_authority(), ping_msec)
+
+@rpc("any_peer", "call_local")
+func update_ping_label(new_ping: int):
+	if not multiplayer.get_remote_sender_id() == 1 or not is_multiplayer_authority():
+		return
+	ping = new_ping
+	interface.ping_label.text = str("ping: ", ping, " ms")
 
 
 func _on_ping_timer_timeout() -> void:

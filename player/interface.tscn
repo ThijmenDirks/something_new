@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_ehm64"]
 [ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_mtnh6"]
+font_size = 48
+
 [node name="InterfaceRoot" type="CanvasLayer" unique_id=1537989861]
 script = ExtResource("1_nbfkv")
 
@@ -16,9 +19,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Interface" unique_id=306504211]
-spawn_path = NodePath("../Panel/VBoxContainer")
-
 [node name="Panel" type="Panel" parent="Interface" unique_id=532344594]
 layout_mode = 0
 offset_left = 9.0
@@ -26,7 +26,7 @@ offset_top = 601.0
 offset_right = 398.0
 offset_bottom = 1038.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Interface/Panel" unique_id=517291785]
+[node name="ChatLabelContainer" type="VBoxContainer" parent="Interface/Panel" unique_id=517291785]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -36,11 +36,15 @@ offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Interface/Panel/VBoxContainer" unique_id=77630807]
+[node name="FirstChatLabel" type="Label" parent="Interface/Panel/ChatLabelContainer" unique_id=77630807]
 layout_mode = 2
 text = "<server>: Welcome in the lobby!"
 
-[node name="LineEdit" type="LineEdit" parent="Interface/Panel/VBoxContainer" unique_id=166079943]
+[node name="Label" type="Label" parent="Interface/Panel/ChatLabelContainer" unique_id=1380127607]
+layout_mode = 2
+text = "newa lbel"
+
+[node name="LineEdit" type="LineEdit" parent="Interface/Panel/ChatLabelContainer" unique_id=166079943]
 layout_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="Interface" unique_id=910594123]
@@ -60,7 +64,7 @@ texture = ExtResource("2_ehm64")
 offset_right = 541.0
 offset_bottom = 146.0
 
-[node name="Control" type="Control" parent="." unique_id=1684255827]
+[node name="Joystick" type="Control" parent="." unique_id=1684255827]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 3
 anchors_preset = 15
@@ -94,5 +98,11 @@ Diagonals = null
 visible = false
 offset_right = 1933.0
 offset_bottom = 1077.0
+
+[node name="PingLabel" type="Label" parent="." unique_id=1695131898]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ping:"
+label_settings = SubResource("LabelSettings_mtnh6")
 
 [connection signal="pressed" from="CastSpellButton" to="." method="_on_cast_spell_button_pressed"]

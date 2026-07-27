@@ -3,3 +3,6 @@ res://assets/theme.tres
 res://addons/virtual_joystick_DX/vjdx_core_script.gd
 res://autoloads/network_manager.gd
 res://root.gd
+res://player/player.gd
+res://player/player.tscn
+res://player/interface.gd
