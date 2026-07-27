@@ -158,14 +158,5 @@ texture = ExtResource("3_fhl08")
 wait_time = 10.0
 one_shot = true
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1417697596]
-position = Vector2(466.50003, -225.49998)
-scale = Vector2(7.320312, 4.1171875)
-texture = ExtResource("3_fhl08")
-
-[node name="Icon2" type="Sprite2D" parent="." unique_id=220568098]
-position = Vector2(-162, 130)
-texture = ExtResource("3_fhl08")
-
 [connection signal="timeout" from="SpellCastSystem/AimTimer" to="SpellCastSystem" method="_on_aim_timer_timeout"]
 [connection signal="timeout" from="PingTimer" to="." method="_on_ping_timer_timeout"]

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bcntreqq5c244" path="res://player/interface.gd" id="1_nbfkv"]
 [ext_resource type="PackedScene" uid="uid://bni0imv6noqlc" path="res://spell_system/spell_drawer.tscn" id="1_uck06"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_ehm64"]
+[ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
 
 [node name="InterfaceRoot" type="CanvasLayer" unique_id=1537989861]
 script = ExtResource("1_nbfkv")
@@ -59,7 +60,32 @@ texture = ExtResource("2_ehm64")
 offset_right = 541.0
 offset_bottom = 146.0
 
+[node name="Control" type="Control" parent="." unique_id=1684255827]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 440.0
+offset_top = 855.0
+offset_right = -1313.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(83.5, 90.5)
+mouse_filter = 2
+script = ExtResource("4_mtnh6")
+action_left = &"left_1"
+action_right = &"right_1"
+action_up = &"up_1"
+action_down = &"down_1"
+"Colors - D-Pad" = null
+"Textures - D-Pad" = null
+Cardinals = null
+Diagonals = null
+
 [node name="Panel" type="Panel" parent="." unique_id=982799090]
+visible = false
 offset_right = 1933.0
 offset_bottom = 1077.0
 

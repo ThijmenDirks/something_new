@@ -1,3 +1,4 @@
+Control
 Panel
 MultiplayerSynchronizer
 Timer
@@ -12,4 +13,3 @@ StaticBody2D
 RigidBody2D
 CanvasLayer
 Label
-SpringArm3D
