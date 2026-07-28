@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ipj6dmm1hxet"]
+
+[ext_resource type="Script" uid="uid://dum160olummha" path="res://items/hand_items/weapons/ranged_weapons/ranged_weapon.gd" id="1_5d0t7"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_vvgwl"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vvgwl"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="RangedWeapon" type="Area2D" unique_id=1432908124]
+script = ExtResource("1_5d0t7")
+rotation_speed = 2.0
+
+[node name="Timer" type="Timer" parent="." unique_id=115100729]
+wait_time = 0.5
+one_shot = true
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=977745387]
+position = Vector2(52, 0)
+scale = Vector2(1, 0.2)
+texture = ExtResource("2_vvgwl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1175093365]
+replication_config = SubResource("SceneReplicationConfig_vvgwl")

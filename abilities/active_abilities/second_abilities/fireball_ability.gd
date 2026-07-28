@@ -40,6 +40,7 @@ func get_used_verified() -> void:
 func cast_the_spell(args: Array) -> void:
 	if not multiplayer.get_remote_sender_id() == 1:
 		return
+	print("cast from peer: ", multiplayer.get_unique_id())
 	var spell = args[0]
 	var target_pos = args[1]
 	#if target_pos is too far from the player, fuck him up, because that would mean some kind of cheating

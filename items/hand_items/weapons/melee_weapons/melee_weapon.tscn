@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://vqh7pbef8do5"]
 
-[ext_resource type="Script" uid="uid://brvq28r1spkf7" path="res://weapons/melee_weapon.gd" id="1_45di4"]
+[ext_resource type="Script" uid="uid://brvq28r1spkf7" path="res://items/hand_items/weapons/melee_weapons/melee_weapon.gd" id="1_45di4"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_j23ck"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_45di4"]

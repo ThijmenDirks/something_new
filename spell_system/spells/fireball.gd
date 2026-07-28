@@ -3,12 +3,12 @@ class_name Fireball extends Spell
 @onready var explosion: Area2D = $Explosion
 
 var speed: int = 200
-var direction: Vector2 = Vector2.ZERO
+#var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	print("fireball readies")
 	global_position = caster.global_position
-	direction = target_position - global_position
+	#direction = target_position - global_position
 
 
 func _physics_process(delta: float) -> void:
@@ -41,9 +41,9 @@ func explode_physics() -> void:
 	await get_tree().physics_frame
 	queue_free()
 
-@rpc
+@rpc("any_peer")
 func explode_draw_stuff(): # give it a better name
-	if not multiplayer.get_remote_sender_id() == 1:
+	if not multiplayer.get_remote_sender_id() == 1:# or if multiplayer.is_server(): the server doesnt have to draw it
 		return
 	explosion.visible = true
 # these tree are for debug,to make the explosion visible

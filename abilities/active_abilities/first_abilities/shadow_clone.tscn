@@ -22,9 +22,6 @@ animations = [{
 radius = 70.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wdxn2"]
-properties/0/path = NodePath("AnimatedSprite2D:frame")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [node name="ShadowClone" type="CharacterBody2D" unique_id=1262794763]
 visible = false

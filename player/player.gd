@@ -48,11 +48,12 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	var movement_input: Array = [Input.is_action_pressed("right_1"), Input.is_action_pressed("left_1"), Input.is_action_pressed("down_1"), Input.is_action_pressed("up_1")]
+	movement_input = [Input.get_axis("left_1", "right_1"), Input.get_axis("up_1", "down_1")]
 	if movement_input:
 		move.rpc_id(1, movement_input)
 		# note that now there is not that "glide" effect
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_local", "unreliable")
 func move(input) -> void:
 	if not multiplayer.is_server():
 		return
@@ -60,14 +61,17 @@ func move(input) -> void:
 	input = new_values[0]
 	speed = new_values[1]
 	velocity = Vector2.ZERO
-	if input[0]:
-		velocity.x += 1
-	if input[1]:
-		velocity.x -= 1
-	if input[2]:
-		velocity.y += 1
-	if input[3]:
-		velocity.y -= 1
+	#if input[0]:
+		#velocity.x += 1
+	#if input[1]:
+		#velocity.x -= 1
+	#if input[2]:
+		#velocity.y += 1
+	#if input[3]:
+		#velocity.y -= 1
+
+	velocity.x = input[0]
+	velocity.y = input[1]
 
 	if velocity:
 		velocity = velocity.normalized() * speed
@@ -100,19 +104,29 @@ func _input(event: InputEvent) -> void:
 			line_edit.visible = false
 
 		if Input.is_action_just_pressed("use_right_item"):
-			if is_instance_valid(right_hand_node.get_child(0)):
-				print("right hand used !")
-				right_hand_node.get_child(0).get_used()
+			use_right_hand()
 		if Input.is_action_just_pressed("use_left_item"):
-			if is_instance_valid(left_hand_node.get_child(0)):
-				left_hand_node.get_child(0).get_used()
+			use_left_hand()
 		if Input.is_action_just_pressed("use_ability_1"):
-			if is_instance_valid(first_ability_node.get_child(0)):
-				first_ability_node.get_child(0).get_used()
+			use_first_ability()
 		if Input.is_action_just_pressed("use_ability_2"):
-			if is_instance_valid(second_ability_node.get_child(0)):
-				second_ability_node.get_child(0).get_used()
+			use_second_ability()
 
+func use_right_hand():
+	if is_instance_valid(right_hand_node.get_child(0)):
+		right_hand_node.get_child(0).get_used()
+
+func use_left_hand():
+	if is_instance_valid(left_hand_node.get_child(0)):
+		left_hand_node.get_child(0).get_used()
+
+func use_first_ability():
+	if is_instance_valid(first_ability_node.get_child(0)):
+		first_ability_node.get_child(0).get_used()
+
+func use_second_ability():
+	if is_instance_valid(second_ability_node.get_child(0)):
+		second_ability_node.get_child(0).get_used()
 
 func ability_handler(called_func: StringName, args: Array = []) -> Array:
 	if is_instance_valid(first_ability_node.get_child(0)):
@@ -172,7 +186,7 @@ func send_message(message: String):
 	speech_label.text = message # the text is being managed by a MultiplayerSynchronizer
 	for player: Node in get_parent().get_children():
 		if player is Player and not player == self:
-			player.update_chat.rpc_id(player.get_multiplayer_authority())
+			player.update_chat.rpc_id(player.get_multiplayer_authority(), message)
 	update_chat.rpc(message)
 
 	await get_tree().create_timer(message.length() * 0.5).timeout

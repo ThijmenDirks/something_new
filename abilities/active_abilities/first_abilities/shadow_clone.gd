@@ -18,7 +18,7 @@ func move(speed, base_velocity) -> void:
 		animated_sprite_2d.stop()
 	update_movement.rpc([global_position])
 
-@rpc("any_peer")
+@rpc("any_peer", "unreliable")
 func update_movement(new_position: Array) -> void:
 	if multiplayer.get_remote_sender_id() == 1:
 		global_position = new_position[0]
@@ -37,5 +37,5 @@ func die() -> void:
 	queue_free()
 
 func _process(_delta: float) -> void:
-	if is_multiplayer_authority():
-		animated_sprite_2d.play()
+	#if is_multiplayer_authority():
+	animated_sprite_2d.play()

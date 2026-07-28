@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="3_fhl08"]
 [ext_resource type="PackedScene" uid="uid://hlmbv2124ne5" path="res://player/interface.tscn" id="4_vtle1"]
-[ext_resource type="PackedScene" uid="uid://vqh7pbef8do5" path="res://weapons/melee_weapon.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://vqh7pbef8do5" path="res://items/hand_items/weapons/melee_weapons/melee_weapon.tscn" id="5_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://ipj6dmm1hxet" path="res://items/hand_items/weapons/ranged_weapons/ranged_weapon.tscn" id="6_8t03j"]
 [ext_resource type="PackedScene" uid="uid://golq8l7b6dme" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.tscn" id="6_boad6"]
 [ext_resource type="PackedScene" uid="uid://clnan45f7lshk" path="res://abilities/pasive_abilities/invis_escape.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://6frfb5m4tv00" path="res://abilities/active_abilities/second_abilities/fireball_ability.tscn" id="7_hg6s5"]
@@ -130,6 +131,8 @@ label_settings = SubResource("LabelSettings_hqtel")
 [node name="MeleeWeapon" parent="Items/RightHand" unique_id=1970914476 instance=ExtResource("5_qjkh3")]
 
 [node name="LeftHand" type="Node2D" parent="Items" unique_id=1752825588]
+
+[node name="RangedWeapon" parent="Items/LeftHand" unique_id=958850221 instance=ExtResource("6_8t03j")]
 
 [node name="Abilities" type="Node2D" parent="." unique_id=1257077829]
 

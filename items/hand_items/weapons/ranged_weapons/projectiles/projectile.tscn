@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://buhs8ealr14vi"]
+
+[ext_resource type="Script" uid="uid://dnegw67lrxrto" path="res://items/hand_items/weapons/ranged_weapons/projectiles/projectile_class.gd" id="1_acmyn"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_5x216"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5x216"]
+size = Vector2(127, 12)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5x216"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Projectile" type="Area2D" unique_id=1661650622]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_acmyn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=610439763]
+shape = SubResource("RectangleShape2D_5x216")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1318857285]
+scale = Vector2(1, 0.1)
+texture = ExtResource("2_5x216")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1904351952]
+replication_config = SubResource("SceneReplicationConfig_5x216")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

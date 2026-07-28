@@ -58,14 +58,17 @@ func move(args: Array) -> Array:
 	var input: Array = args[0]
 	var speed: int = args[1]
 	var velocity: Vector2
-	if input[0]:
-		velocity.x += 1
-	if input[1]:
-		velocity.x -= 1
-	if input[2]:
-		velocity.y += 1
-	if input[3]:
-		velocity.y -= 1
+	#if input[0]:
+		#velocity.x += 1
+	#if input[1]:
+		#velocity.x -= 1
+	#if input[2]:
+		#velocity.y += 1
+	#if input[3]:
+		#velocity.y -= 1
+	velocity.x = input[0]
+	velocity.y = input[1]
+
 	if velocity:
 		velocity = velocity.normalized() * speed
 	for clone in all_shadow_clones:

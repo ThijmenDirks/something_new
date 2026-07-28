@@ -28,3 +28,10 @@ position = Vector2(1325, 330)
 z_index = -1
 scale = Vector2(5, 5)
 texture = ExtResource("3_oi3di")
+
+[node name="Border" type="StaticBody2D" parent="." unique_id=158865857]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Border" unique_id=1943875212]
+polygon = PackedVector2Array(-2000, -1501, 2000, -1500, 2000, 1500, -2000, 1500, -2000, -1500, -2007, -1507, -2080, 1564, 2075, 1616, 2075, -1591, -2006, -1508)
