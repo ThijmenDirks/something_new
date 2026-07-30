@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bbb6uhyhkrkuo"]
 
 [ext_resource type="Script" uid="uid://cp6o0egq4smi0" path="res://player/player.gd" id="1_gwnis"]
+[ext_resource type="Texture2D" uid="uid://b1jl4xuqnsbie" path="res://assets/PurpleWizard.png" id="2_2ieo8"]
+[ext_resource type="Script" uid="uid://8erui6qd6jjg" path="res://player/sprite_handler.gd" id="2_ebec5"]
 [ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_k53q1"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="3_fhl08"]
 [ext_resource type="PackedScene" uid="uid://hlmbv2124ne5" path="res://player/interface.tscn" id="4_vtle1"]
@@ -10,6 +12,170 @@
 [ext_resource type="PackedScene" uid="uid://clnan45f7lshk" path="res://abilities/pasive_abilities/invis_escape.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://6frfb5m4tv00" path="res://abilities/active_abilities/second_abilities/fireball_ability.tscn" id="7_hg6s5"]
 [ext_resource type="Script" uid="uid://dmtih1gvgliow" path="res://spell_system/spell_cast_system.gd" id="8_rgyib"]
+
+[sub_resource type="Animation" id="Animation_2ieo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tqiix"]
+resource_name = "idle_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [64, 66]
+}
+
+[sub_resource type="Animation" id="Animation_e7oew"]
+resource_name = "idle_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [96, 98]
+}
+
+[sub_resource type="Animation" id="Animation_c35mf"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [32, 34]
+}
+
+[sub_resource type="Animation" id="Animation_wodsf"]
+resource_name = "idle_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_yllr7"]
+resource_name = "walk_down"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [68, 69, 70, 71]
+}
+
+[sub_resource type="Animation" id="Animation_32hag"]
+resource_name = "walk_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [100, 101, 102, 103]
+}
+
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "walk_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [37, 38, 39, 40]
+}
+
+[sub_resource type="Animation" id="Animation_kb6p2"]
+resource_name = "walk_up"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yllr7"]
+_data = {
+&"RESET": SubResource("Animation_2ieo8"),
+&"idle_down": SubResource("Animation_tqiix"),
+&"idle_left": SubResource("Animation_e7oew"),
+&"idle_right": SubResource("Animation_c35mf"),
+&"idle_up": SubResource("Animation_wodsf"),
+&"walk_down": SubResource("Animation_yllr7"),
+&"walk_left": SubResource("Animation_32hag"),
+&"walk_right": SubResource("Animation_ebec5"),
+&"walk_up": SubResource("Animation_kb6p2")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
 animations = [{
@@ -45,7 +211,7 @@ properties/3/path = NodePath("HPBar:value")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 
-[sub_resource type="FontFile" id="FontFile_i3pqv"]
+[sub_resource type="FontFile" id="FontFile_65viv"]
 subpixel_positioning = 0
 msdf_pixel_range = 14
 msdf_size = 128
@@ -70,17 +236,41 @@ cache/0/32/0/underline_thickness = 0.0
 cache/0/32/0/scale = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_hqtel"]
-font = SubResource("FontFile_i3pqv")
+font = SubResource("FontFile_65viv")
 font_size = 32
 
-[node name="Player" type="CharacterBody2D" unique_id=1913585745 node_paths=PackedStringArray("animated_sprite_2d")]
+[node name="Player" type="CharacterBody2D" unique_id=1913585745 node_paths=PackedStringArray("animation_player", "animated_sprite_2d")]
 collision_mask = 4
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_gwnis")
+animation_player = NodePath("SpriteHandler/AnimationPlayer")
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 
+[node name="SpriteHandler" type="Node2D" parent="." unique_id=154032130 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("2_ebec5")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteHandler" unique_id=1155200141]
+libraries/ = SubResource("AnimationLibrary_yllr7")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteHandler" unique_id=1940508529]
+z_index = 1
+scale = Vector2(10, 10)
+texture = ExtResource("2_2ieo8")
+hframes = 16
+vframes = 8
+
+[node name="RaceSprite" type="Sprite2D" parent="SpriteHandler" unique_id=279346409]
+
+[node name="ClassSprite" type="Sprite2D" parent="SpriteHandler" unique_id=397090885]
+
+[node name="ArmorSprite" type="Sprite2D" parent="SpriteHandler" unique_id=435072753]
+
+[node name="RaceTopSprite(dwarven beard and elven ears)" type="Sprite2D" parent="SpriteHandler" unique_id=330089951]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=946073209]
+visible = false
 sprite_frames = SubResource("SpriteFrames_hqtel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306227823]
@@ -93,7 +283,6 @@ offset_right = 35.0
 offset_bottom = -67.0
 text = "Player ID"
 label_settings = SubResource("LabelSettings_hg6s5")
-metadata/_edit_use_anchors_ = true
 
 [node name="HPBar" type="TextureProgressBar" parent="." unique_id=1359473369]
 offset_left = -65.0
@@ -155,11 +344,17 @@ script = ExtResource("8_rgyib")
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="SpellCastSystem" unique_id=918078856]
+visible = false
 texture = ExtResource("3_fhl08")
 
 [node name="PingTimer" type="Timer" parent="." unique_id=719317141]
 wait_time = 10.0
 one_shot = true
+
+[node name="PurpleWizard" type="Sprite2D" parent="." unique_id=1257758047]
+visible = false
+position = Vector2(366, -161)
+texture = ExtResource("2_2ieo8")
 
 [connection signal="timeout" from="SpellCastSystem/AimTimer" to="SpellCastSystem" method="_on_aim_timer_timeout"]
 [connection signal="timeout" from="PingTimer" to="." method="_on_ping_timer_timeout"]

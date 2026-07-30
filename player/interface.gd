@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_right_hand_button_pressed() -> void:
+	print("right hand used !!")
 	player.use_right_hand()
 
 func _on_left_hand_button_pressed() -> void:

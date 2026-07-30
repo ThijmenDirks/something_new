@@ -5,6 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_ehm64"]
 [ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtnh6"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_teo7p"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nusud"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25mc0"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyopb"]
+size = Vector2(200, 200)
+
 [sub_resource type="LabelSettings" id="LabelSettings_mtnh6"]
 font_size = 48
 
@@ -92,45 +107,30 @@ region_h = 522.0
 Cardinals = null
 Diagonals = null
 
-[node name="RightHandButton" type="Button" parent="TouchScreenButtons" unique_id=1179200727]
-layout_mode = 0
-offset_left = 1671.0
-offset_top = 780.0
-offset_right = 1871.0
-offset_bottom = 980.0
-text = "right hand"
+[node name="RightHandButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1204228833]
+position = Vector2(1658, 846)
+texture_normal = ExtResource("2_ehm64")
+shape = SubResource("RectangleShape2D_mtnh6")
 
-[node name="LeftHandButton" type="Button" parent="TouchScreenButtons" unique_id=894546460]
-layout_mode = 0
-offset_left = 1380.0
-offset_top = 781.0
-offset_right = 1580.0
-offset_bottom = 981.0
-text = "left hand"
+[node name="LeftHandButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=809118954]
+position = Vector2(1371, 794)
+texture_normal = ExtResource("2_ehm64")
+shape = SubResource("RectangleShape2D_teo7p")
 
-[node name="FirstAbilityButton" type="Button" parent="TouchScreenButtons" unique_id=1173007355]
-layout_mode = 0
-offset_left = 1694.0
-offset_top = 404.0
-offset_right = 1894.0
-offset_bottom = 604.0
-text = "first ability"
+[node name="FirstAbilityButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1841371575]
+position = Vector2(1371, 527)
+texture_normal = ExtResource("2_ehm64")
+shape = SubResource("RectangleShape2D_nusud")
 
-[node name="SecondAbilityButton" type="Button" parent="TouchScreenButtons" unique_id=1597828812]
-layout_mode = 0
-offset_left = 1373.0
-offset_top = 493.0
-offset_right = 1573.0
-offset_bottom = 693.0
-text = "second ability"
+[node name="SecondAbilityButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1463805035]
+position = Vector2(1656, 393)
+texture_normal = ExtResource("2_ehm64")
+shape = SubResource("RectangleShape2D_25mc0")
 
-[node name="CastSpellButton" type="Button" parent="TouchScreenButtons" unique_id=1680706490]
-layout_mode = 0
-offset_left = 1688.0
-offset_top = 640.0
-offset_right = 1887.0
-offset_bottom = 726.0
-text = "cast spell"
+[node name="CastSpellButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1523797098]
+position = Vector2(1705, 620)
+texture_normal = ExtResource("2_ehm64")
+shape = SubResource("RectangleShape2D_jyopb")
 
 [node name="PingLabel" type="Label" parent="." unique_id=1695131898]
 offset_left = 478.0

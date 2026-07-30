@@ -12,11 +12,11 @@ const ICON = preload("uid://duvc1h3v4qe0f")
 
 var spell_input: Array[int] = []
 
-#var is_first_release: bool = true
+var is_first_release: bool = true#
 var is_touching: bool = false
 var last_collider: Area2D
 
-signal spell_is_finished
+#signal spell_is_finished
 
 func _enter_tree() -> void:
 	spell_input = spell_input.duplicate()
@@ -46,6 +46,7 @@ func _input(event: InputEvent) -> void:
 	#if not visible:
 		#return
 	if is_touching:
+		print("is touching")
 		if event is InputEventScreenDrag:
 			var drag_position: Vector2 = event.position - position
 			cpu_particles_2d.position = drag_position
@@ -61,16 +62,18 @@ func _process(_delta: float) -> void:
 	if not visible:
 		return
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		print("is pressing")
 		is_touching = true
 	else:
+		print("is not touching")
 		if is_touching:
-			#if is_first_release:
+			if is_first_release:#
 				cpu_particles_2d.restart()
-				#is_first_release = false
-			#else:
+				is_first_release = false#
+			else:#
 				print("cast spell from let loose")
 				cast_spell()
-				#is_first_release = true
+				is_first_release = true#
 		is_touching = false
 
 func cast_spell() -> void:

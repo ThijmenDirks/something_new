@@ -1,10 +1,24 @@
 class_name Player extends CharacterBody2D
 
+@export_category("stats")
+@export var strength: int = 10
+@export var dexterity: int = 10
+@export var inteligence: int = 10
+@export var speed: int = 400
+@export var max_hp: int = 100
+@export var current_hp: int = 100
+@export var race: bool
+
+@export_category("")
+
 @onready var interface: Node = $Interface
 @onready var speech_label: Label = $SpeechLabel
 @onready var line_edit: LineEdit = $Interface/Interface/Panel/ChatLabelContainer/LineEdit
 @onready var chat: VBoxContainer = $Interface/Interface/Panel/ChatLabelContainer
 @onready var spell_cast_system: Node2D = $SpellCastSystem
+@onready var player_id_label: Label = $"Player ID"
+
+@export var animation_player: AnimationPlayer# = $SpriteHandler/AnimationPlayer
 
 @export var animated_sprite_2d: AnimatedSprite2D# = $AnimatedSprite2D
 @onready var spell_drawer: Control = $Interface/SpellDrawer
@@ -18,9 +32,6 @@ class_name Player extends CharacterBody2D
 
 @export var sync_pos: Vector2 = Vector2.ZERO
 
-var speed: int = 400
-var max_hp: int = 100
-@export var current_hp: int = 100
 
 var can_cast_spells: bool = false
 
@@ -50,11 +61,35 @@ func _physics_process(_delta: float) -> void:
 	var movement_input: Array = [Input.is_action_pressed("right_1"), Input.is_action_pressed("left_1"), Input.is_action_pressed("down_1"), Input.is_action_pressed("up_1")]
 	movement_input = [Input.get_axis("left_1", "right_1"), Input.get_axis("up_1", "down_1")]
 	if movement_input:
-		move.rpc_id(1, movement_input)
+		move_client_side(movement_input)
+		move_server_side.rpc_id(1, movement_input)
 		# note that now there is not that "glide" effect
 
+func move_client_side(movement_input):
+	if not is_multiplayer_authority() or multiplayer.is_server():
+		return
+	#var new_values: Array = ability_handler("move", [input, speed])
+	#input = new_values[0]
+	#speed = new_values[1]
+	velocity = Vector2.ZERO
+
+
+	velocity.x = movement_input[0]
+	velocity.y = movement_input[1]
+	if velocity:
+		velocity = velocity.normalized() * speed
+	#update_animation(velocity)
+		#animated_sprite_2d.play()
+	#else:
+		#animated_sprite_2d.stop()
+		#velocity = velocity.move_toward(Vector2.ZERO, 0.01)
+
+	move_and_slide()
+	#sync_pos = global_position
+
+
 @rpc("any_peer", "call_local", "unreliable")
-func move(input) -> void:
+func move_server_side(input) -> void:
 	if not multiplayer.is_server():
 		return
 	var new_values: Array = ability_handler("move", [input, speed])
@@ -72,23 +107,24 @@ func move(input) -> void:
 
 	velocity.x = input[0]
 	velocity.y = input[1]
-
 	if velocity:
 		velocity = velocity.normalized() * speed
-		animated_sprite_2d.play()
-	else:
-		animated_sprite_2d.stop()
+	#update_animation(velocity)
+		#animated_sprite_2d.play()
+	#else:
+		#animated_sprite_2d.stop()
 		#velocity = velocity.move_toward(Vector2.ZERO, 0.01)
 
 	move_and_slide()
 	#sync_pos = global_position
-	var new_position: Vector2 = global_position
-	update_movement.rpc([new_position])
+	#var new_position: Vector2 = global_position
+	update_movement.rpc([global_position, velocity])
 
-@rpc("any_peer", "call_remote")
-func update_movement(new_position: Array) -> void:
+@rpc("any_peer", "call_remote", "unreliable")
+func update_movement(args: Array) -> void:
 	if multiplayer.get_remote_sender_id() == 1:
-		global_position = new_position[0]
+		global_position = args[0]
+		velocity = args[1]
 
 func _input(event: InputEvent) -> void:
 	# make something that makes the player not move when typing one of [w,a,s,d]
@@ -183,6 +219,7 @@ func start_casting_spell(limited_spell_list: Array[Dictionary] = []):
 	spell_cast_system.start_casting_spell(limited_spell_list)
 
 func send_message(message: String):
+	ability_handler("send_message", [message]) # used by: shadow clone
 	speech_label.text = message # the text is being managed by a MultiplayerSynchronizer
 	for player: Node in get_parent().get_children():
 		if player is Player and not player == self:

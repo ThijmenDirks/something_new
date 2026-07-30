@@ -20,7 +20,7 @@ func _enter_tree() -> void:
 	else:
 		assert(false)
 	#my_owner = get_parent().get_parent().get_parent()
-	#visible = my_owner.is_multiplayer_authority()
+	visible = my_owner.is_multiplayer_authority()
 	rotation = randf_range(0, TAU)
 	if is_instance_valid(get_parent()):
 		if get_parent().name == "RightHand":

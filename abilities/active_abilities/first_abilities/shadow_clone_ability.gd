@@ -7,7 +7,7 @@ var amount_of_clones: int = 5
 
 @onready var cooldown_timer: Timer = $CooldownTimer
 
-@export var all_shadow_clones: Array[Node2D]
+@export var all_shadow_clones: Array[CharacterBody2D]
 
 
 func _enter_tree() -> void:
@@ -39,15 +39,22 @@ func get_used_verified() -> void:
 
 @rpc("call_local")
 func spawn_new_shadow_clone() -> void:
+	# max hp is not yet done
 	var new_shadow_clone = SHADOW_CLONE.instantiate()
 	new_shadow_clone.velocity_offset = randf_range(0, TAU)
 	new_shadow_clone.visible = true
 	new_shadow_clone.global_position = global_position
+
+	new_shadow_clone.hp_bar.value = my_owner.hp_bar.value
+	new_shadow_clone.player_id_label.text = my_owner.player_id_label.text
+
+
 	new_shadow_clone.my_ability = self
 	new_shadow_clone.set_collision_layer_value(1, true)
 	new_shadow_clone.set_collision_mask_value(3, true)
+	new_shadow_clone.set_multiplayer_authority(1)
 	all_shadow_clones.append(new_shadow_clone)
-	new_shadow_clone.set_multiplayer_authority(get_multiplayer_authority())
+	#new_shadow_clone.set_multiplayer_authority(get_multiplayer_authority())
 	get_parent().get_parent().get_parent().get_parent().add_child(new_shadow_clone, true)
 
 
@@ -79,4 +86,18 @@ func move(args: Array) -> Array:
 func attack(args: Array) -> Array:
 	if not multiplayer.is_server():
 		return args
+	return args
+
+func take_damage_server_side(args: Array) -> Array:
+	if not multiplayer.is_server():
+		return args
+	var damage: int = args[0]
+	for clone in all_shadow_clones:
+		clone.update_hp_bar.rpc(damage)
+	return args
+
+func send_message(args: Array) -> Array:
+	var message: String = args[0]
+	for clone in all_shadow_clones:
+		clone.send_message(message)
 	return args

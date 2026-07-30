@@ -1,5 +1,6 @@
 extends Node
 #O&O reserved IP: 192.168.2.8
+# O&O lobal IP: 81.204.249.19
 # "home" reserved IP: idk
 
 
@@ -11,7 +12,7 @@ signal player_disconnected(peer_id)
 signal server_disconnected
 
 var PORT = 35432#35_000
-var DEFAULT_SERVER_IP = "81.204.249.19"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
+var DEFAULT_SERVER_IP = "127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
 const MAX_CONNECTIONS = 5
 
 # This will contain player info for every player,
