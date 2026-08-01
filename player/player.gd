@@ -165,13 +165,13 @@ func use_second_ability():
 		second_ability_node.get_child(0).get_used()
 
 func ability_handler(called_func: StringName, args: Array = []) -> Array:
-	if is_instance_valid(first_ability_node.get_child(0)):
+	if first_ability_node.get_child_count() != 0:
 		if first_ability_node.get_child(0).has_method(called_func):
 			args = first_ability_node.get_child(0).call(called_func, args)
-	if is_instance_valid(second_ability_node.get_child(0)):
+	if second_ability_node.get_child_count() != 0:
 		if second_ability_node.get_child(0).has_method(called_func):
 			args = second_ability_node.get_child(0).call(called_func, args)
-	if is_instance_valid(passive_ability_node.get_child(0)):
+	if passive_ability_node.get_child_count() != 0:
 		if passive_ability_node.get_child(0).has_method(called_func):
 			args = passive_ability_node.get_child(0).call(called_func, args)
 	return args

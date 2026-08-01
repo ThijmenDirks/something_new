@@ -5,6 +5,7 @@
 
 [node name="InvisEscapePassive" type="Node2D" unique_id=1045013220]
 script = ExtResource("1_brc20")
+select_logo = ExtResource("2_mt4tu")
 
 [node name="SelectLogo" type="Sprite2D" parent="." unique_id=113520575]
 visible = false

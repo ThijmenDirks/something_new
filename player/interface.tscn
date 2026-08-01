@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bni0imv6noqlc" path="res://spell_system/spell_drawer.tscn" id="1_uck06"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_ehm64"]
 [ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
+[ext_resource type="PackedScene" uid="uid://b1hx26pwp02t7" path="res://player/stats_menu.tscn" id="5_teo7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtnh6"]
 size = Vector2(200, 200)
@@ -112,25 +113,50 @@ position = Vector2(1658, 846)
 texture_normal = ExtResource("2_ehm64")
 shape = SubResource("RectangleShape2D_mtnh6")
 
+[node name="Label" type="Label" parent="TouchScreenButtons/RightHandButton" unique_id=572800842]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Sword"
+
 [node name="LeftHandButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=809118954]
 position = Vector2(1371, 794)
 texture_normal = ExtResource("2_ehm64")
 shape = SubResource("RectangleShape2D_teo7p")
+
+[node name="Label" type="Label" parent="TouchScreenButtons/LeftHandButton" unique_id=1354924083]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "spear"
 
 [node name="FirstAbilityButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1841371575]
 position = Vector2(1371, 527)
 texture_normal = ExtResource("2_ehm64")
 shape = SubResource("RectangleShape2D_nusud")
 
+[node name="Label" type="Label" parent="TouchScreenButtons/FirstAbilityButton" unique_id=765187428]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "clones"
+
 [node name="SecondAbilityButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1463805035]
 position = Vector2(1656, 393)
 texture_normal = ExtResource("2_ehm64")
 shape = SubResource("RectangleShape2D_25mc0")
 
+[node name="Label" type="Label" parent="TouchScreenButtons/SecondAbilityButton" unique_id=46046886]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "cast spell"
+
 [node name="CastSpellButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1523797098]
 position = Vector2(1705, 620)
 texture_normal = ExtResource("2_ehm64")
 shape = SubResource("RectangleShape2D_jyopb")
+
+[node name="Label" type="Label" parent="TouchScreenButtons/CastSpellButton" unique_id=2074826235]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "cast spell"
 
 [node name="PingLabel" type="Label" parent="." unique_id=1695131898]
 offset_left = 478.0
@@ -140,8 +166,23 @@ offset_bottom = 87.0
 text = "ping:"
 label_settings = SubResource("LabelSettings_mtnh6")
 
+[node name="StatsMenuButton" type="Button" parent="." unique_id=143731236]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1697.0
+offset_top = 33.0
+offset_right = -13.0
+offset_bottom = -970.0
+text = "Stats
+"
+
+[node name="StatsMenu" parent="." unique_id=681272594 instance=ExtResource("5_teo7p")]
+visible = false
+
 [connection signal="pressed" from="TouchScreenButtons/RightHandButton" to="." method="_on_right_hand_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/LeftHandButton" to="." method="_on_left_hand_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/FirstAbilityButton" to="." method="_on_first_ability_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/SecondAbilityButton" to="." method="_on_second_ability_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/CastSpellButton" to="." method="_on_cast_spell_button_pressed"]
+[connection signal="pressed" from="StatsMenuButton" to="." method="_on_stats_menu_button_pressed"]

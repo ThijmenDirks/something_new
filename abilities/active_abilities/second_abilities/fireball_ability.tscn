@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://6frfb5m4tv00"]
 
 [ext_resource type="Script" uid="uid://c3yiakny2k8p5" path="res://abilities/active_abilities/second_abilities/fireball_ability.gd" id="1_eya5o"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_1j1uw"]
 
 [node name="FireballAbility" type="Node2D" unique_id=1188303989]
 script = ExtResource("1_eya5o")
 allows_spellcasting = true
+select_logo = ExtResource("2_1j1uw")
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1265645681]
 wait_time = 5.0

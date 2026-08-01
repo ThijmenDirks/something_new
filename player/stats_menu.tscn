@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://b1hx26pwp02t7"]
+
+[ext_resource type="Script" uid="uid://bpixwttwmguxw" path="res://player/stats_menu.gd" id="1_ffwu1"]
+[ext_resource type="PackedScene" uid="uid://b35oytowl220m" path="res://player/class_tree.tscn" id="1_ui8ke"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_o4ci8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ffwu1"]
+font_size = 64
+
+[node name="StatsMenu" type="Control" unique_id=798444174]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1800.0
+offset_bottom = 960.0
+script = ExtResource("1_ffwu1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=681272594]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 60.0
+offset_right = -60.0
+offset_bottom = 136.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1727149363]
+layout_mode = 2
+
+[node name="Itemstuff" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=548366492]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff" unique_id=1857354209]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer" unique_id=1440293745]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="Equiped" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer" unique_id=1034220329]
+layout_mode = 2
+
+[node name="leftHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=490036099]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/leftHand" unique_id=1007317474]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="Armor" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=945163921]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/Armor" unique_id=2046107960]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="RightHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=599113890]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/RightHand" unique_id=548864026]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/Itemstuff" unique_id=1038387543]
+layout_mode = 2
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=407902096]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1713627811]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1059600415]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1398501909]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=826244281]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1459179430]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=898493117]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect8" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=96563777]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="TextureRect9" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=676003224]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="Classtuff" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=487398578]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SlectedClasses" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff" unique_id=59237593]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses" unique_id=1818983550]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses" unique_id=96731200]
+layout_mode = 2
+
+[node name="FristAbility" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer" unique_id=2114957810]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SecondAbility" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer" unique_id=339821936]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PassiveAblity" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer" unique_id=1507043513]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff" unique_id=1040050456]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClassTree" parent="MarginContainer/HBoxContainer/Classtuff/MarginContainer" unique_id=2103230828 instance=ExtResource("1_ui8ke")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="." unique_id=1185823551]
+layout_mode = 0
+offset_left = 1753.0
+offset_top = 15.0
+offset_right = 1899.0
+offset_bottom = 128.0
+text = "Back"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=979306035]
+visible = false
+layout_mode = 0
+offset_left = 61.0
+offset_top = 58.0
+offset_right = 1735.0
+offset_bottom = 783.0
+color = Color(0, 0, 0, 1)
+
+[node name="DebugLabel" type="Label" parent="." unique_id=1233496353]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 191.0
+offset_right = 1638.0
+offset_bottom = 461.0
+text = "THIS MENU IS IN BETA.
+DO NOT PRESS ANY BUTTON EXCEPT 
+THE \"BACK\" BUTTON TOP RIGHT"
+label_settings = SubResource("LabelSettings_ffwu1")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cy0uvws2r22qf"]
+
+[ext_resource type="Script" uid="uid://1tqai0lre2px" path="res://player/ability_select_button.gd" id="1_162jr"]
+[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_tvclq"]
+
+[node name="AbilitySelectButton" type="TextureButton" unique_id=1214671612]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_162jr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347977129]
+z_index = -1
+texture = ExtResource("2_tvclq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

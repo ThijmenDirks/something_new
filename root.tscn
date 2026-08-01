@@ -13,6 +13,12 @@ texture = ExtResource("3_28aoi")
 [sub_resource type="LabelSettings" id="LabelSettings_28aoi"]
 font_size = 48
 
+[sub_resource type="LabelSettings" id="LabelSettings_jnlp7"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8v81"]
+font_size = 32
+
 [node name="Root" type="Node" unique_id=655113354]
 script = ExtResource("1_pyidc")
 level_scene = ExtResource("2_28aoi")
@@ -114,6 +120,70 @@ offset_bottom = 575.0
 theme = SubResource("Theme_28aoi")
 label_settings = SubResource("LabelSettings_28aoi")
 
+[node name="CreditsButton" type="Button" parent="MainMenuStuff" unique_id=666396331]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 47.9
+anchor_right = 47.9
+offset_left = -161.0
+offset_top = 7.0
+offset_bottom = 79.0
+text = "Credits"
+
+[node name="ColorRect" type="ColorRect" parent="MainMenuStuff" unique_id=1969085154]
+visible = false
+layout_mode = 0
+offset_right = 1772.0
+offset_bottom = 1081.0
+color = Color(0, 0, 0, 1)
+
+[node name="CreditsLabel" type="Label" parent="MainMenuStuff" unique_id=1292574507]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.111004
+anchor_bottom = 26.891
+offset_left = 53.0
+offset_top = 29.0
+offset_right = -229.44019
+offset_bottom = 0.35998535
+text = "Credits:
+
+- Multiplayer basis: Someone online I forgot (sorry).
+
+- Networking: Varonex
+
+- Joystick: Repechul
+
+- Programming: me
+
+- Game Concept: me
+
+- art: me, and someone I don't know.
+
+- AI usage: Limited, only for debuging and information. No AI code or art used.
+
+- Special thanks to familiy and friends."
+label_settings = SubResource("LabelSettings_jnlp7")
+
+[node name="LineEdit" type="LineEdit" parent="MainMenuStuff" unique_id=1921665943]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 473.0
+offset_right = 690.0
+offset_bottom = 618.0
+text = "127.0.0.1"
+emoji_menu_enabled = false
+
+[node name="Label" type="Label" parent="MainMenuStuff" unique_id=1149378355]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 412.0
+offset_right = 525.0
+offset_bottom = 457.0
+text = "IP address:"
+label_settings = SubResource("LabelSettings_l8v81")
+
 [node name="ConnectionTimer" type="Timer" parent="." unique_id=2112640522]
 wait_time = 5.0
 one_shot = true
@@ -122,4 +192,5 @@ one_shot = true
 [connection signal="pressed" from="MainMenuStuff/ButtonContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="MainMenuStuff/ButtonContainer/Join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="MainMenuStuff/ButtonContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenuStuff/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="timeout" from="ConnectionTimer" to="." method="_on_connection_timer_timeout"]

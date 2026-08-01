@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://hlmbv2124ne5" path="res://player/interface.tscn" id="4_vtle1"]
 [ext_resource type="PackedScene" uid="uid://vqh7pbef8do5" path="res://items/hand_items/weapons/melee_weapons/melee_weapon.tscn" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://ipj6dmm1hxet" path="res://items/hand_items/weapons/ranged_weapons/ranged_weapon.tscn" id="6_8t03j"]
-[ext_resource type="PackedScene" uid="uid://golq8l7b6dme" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.tscn" id="6_boad6"]
 [ext_resource type="PackedScene" uid="uid://clnan45f7lshk" path="res://abilities/pasive_abilities/invis_escape.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://6frfb5m4tv00" path="res://abilities/active_abilities/second_abilities/fireball_ability.tscn" id="7_hg6s5"]
 [ext_resource type="Script" uid="uid://dmtih1gvgliow" path="res://spell_system/spell_cast_system.gd" id="8_rgyib"]
+[ext_resource type="PackedScene" uid="uid://golq8l7b6dme" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.tscn" id="9_ebec5"]
 
 [sub_resource type="Animation" id="Animation_2ieo8"]
 length = 0.001
@@ -327,7 +327,7 @@ label_settings = SubResource("LabelSettings_hqtel")
 
 [node name="FirstAbility" type="Node2D" parent="Abilities" unique_id=1075931572]
 
-[node name="ShadowCloneAbility" parent="Abilities/FirstAbility" unique_id=2123557379 instance=ExtResource("6_boad6")]
+[node name="ShadowCloneAbility" parent="Abilities/FirstAbility" unique_id=2123557379 instance=ExtResource("9_ebec5")]
 
 [node name="SecondAbility" type="Node2D" parent="Abilities" unique_id=1666756119]
 

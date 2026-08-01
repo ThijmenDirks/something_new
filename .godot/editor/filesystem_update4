@@ -1,0 +1,5 @@
+res://root.tscn
+res://assets/theme.tres
+res://autoloads/network_manager.gd
+res://root.gd
+res://player/player.tscn

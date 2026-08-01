@@ -69,7 +69,8 @@ func create_game():
 	##player_connected.emit(1, connection_type)
 
 func join_game():
-	NetworkManager.join_game("", port)
+	var target_ip: String = $MainMenuStuff/LineEdit.text
+	NetworkManager.join_game(target_ip, port)
 	# Start a timer to check if joining
 	connection_timer.start()
 	players_joined_label.text = "Joining..."
@@ -105,3 +106,12 @@ func _on_host_pressed() -> void:
 
 func _on_join_pressed() -> void:
 	join_game()
+
+
+func _on_credits_button_pressed() -> void:
+	if $MainMenuStuff/ColorRect.visible:
+		$MainMenuStuff/ColorRect.visible = false
+		$MainMenuStuff/CreditsLabel.visible = false
+	else:
+		$MainMenuStuff/ColorRect.visible = true
+		$MainMenuStuff/CreditsLabel.visible = true

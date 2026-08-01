@@ -1,18 +1,19 @@
 extends Node
-#O&O reserved IP: 192.168.2.8
-# O&O lobal IP: 81.204.249.19
+# O&O reserved IP: 192.168.2.8 - global IP: 81.204.249.19
+# H&H reserved IP: 192.168.178.212 - global IP: 82.74.204.141
 # "home" reserved IP: idk
 
 
 # Autoload named Network Manager
 
 # These signals can be connected to by a UI lobby scene or the game scene.
-signal player_connected(peer_id, player_info)
+signal player_connected(peer_id, player_iinfo)
 signal player_disconnected(peer_id)
 signal server_disconnected
 
 var PORT = 35432#35_000
-var DEFAULT_SERVER_IP = "127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
+var DEFAULT_SERVER_IP = "192.168.178.212"#"82.74.204.141"#"127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
+#var DEFAULT_SERVER_IP = "82.74.204.141"#"127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
 const MAX_CONNECTIONS = 5
 
 # This will contain player info for every player,
@@ -38,12 +39,12 @@ func _ready():
 		create_game(PORT)
 
 
-func join_game(address = "", port: int = PORT):
+func join_game(address: String = "", port: int = PORT):
 	print("Joining")
-	if address.is_empty():
+	if address.is_empty() or not address.is_valid_ip_address():
 		address = DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(DEFAULT_SERVER_IP, port)
+	var error = peer.create_client(address, port)
 	if error:
 		print("Couldnt join")
 		return error
