@@ -1,14 +1,17 @@
 class_name Player extends CharacterBody2D
 
 @export_category("stats")
-@export var strength: int = 10
-@export var dexterity: int = 10
-@export var inteligence: int = 10
+@export var strength: int = 10 # only for reference, handled by stats_menu
+@export var dexterity: int = 10 # only for reference, handled by stats_menu
+@export var intelligence: int = 10 # only for reference, handled by stats_menu
 @export var speed: int = 400
 @export var max_hp: int = 100
 @export var current_hp: int = 100
 @export var race: bool
-
+@export var level: int = 1
+@export var xp: int = 0
+@export var pending_stat_boosts: int = 0
+@export var pending_levels: int = 0
 @export_category("")
 
 @onready var interface: Node = $Interface
@@ -23,11 +26,12 @@ class_name Player extends CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D# = $AnimatedSprite2D
 @onready var spell_drawer: Control = $Interface/SpellDrawer
 
+@onready var stats_menu: Control = $Interface/StatsMenu
 @onready var right_hand_node: Node2D = $Items/RightHand
 @onready var left_hand_node: Node2D = $Items/LeftHand
-@onready var first_ability_node: Node2D = $Abilities/FirstAbility
-@onready var second_ability_node: Node2D = $Abilities/SecondAbility
-@onready var passive_ability_node: Node2D = $Abilities/PassiveAbility
+@onready var first_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/FristAbility#$Abilities/FirstAbility
+@onready var second_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/SecondAbility
+@onready var passive_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/PassiveAbility
 @onready var hp_bar: TextureProgressBar = $HPBar
 
 @export var sync_pos: Vector2 = Vector2.ZERO
@@ -36,6 +40,8 @@ class_name Player extends CharacterBody2D
 var can_cast_spells: bool = false
 
 var uses_touchscreen: bool = false
+
+const xp_per_level: int = 100
 
 func _enter_tree() -> void:
 	# Doing this here instead of on ready prevents bugs
@@ -176,6 +182,26 @@ func ability_handler(called_func: StringName, args: Array = []) -> Array:
 			args = passive_ability_node.get_child(0).call(called_func, args)
 	return args
 
+
+@rpc("any_peer", "call_local")
+func update_stat(stat: int, amount: int) -> void:
+	if not multiplayer.get_remote_sender_id() -- 1:
+		return
+	if stat == 0:
+		strength += amount
+		if strength <= 0:
+			die_server_side()
+	if stat == 1:
+		dexterity += amount
+		if dexterity <= 0:
+			die_server_side()
+	if stat == 2:
+		intelligence += amount
+		if intelligence <= 0:
+			die_server_side()
+	#stats_menu.update_stat(stat, amount)
+
+
 @rpc("any_peer", "call_local")
 func take_damage_client_side(damage: int) -> void:
 	# only to show animation and such, idk what exaclty
@@ -215,8 +241,8 @@ func die_client_side() -> void:
 		return
 	pass
 
-func start_casting_spell(limited_spell_list: Array[Dictionary] = []):
-	spell_cast_system.start_casting_spell(limited_spell_list)
+func start_casting_spell(limited_spell_list: Array[Dictionary] = []) -> void:
+	spell_cast_system.start_casting_spell.rpc_id(1, limited_spell_list)
 
 func send_message(message: String):
 	ability_handler("send_message", [message]) # used by: shadow clone
@@ -248,6 +274,29 @@ func _on_player_disconnected(pid) -> void:
 		GameManager.player_info.erase(pid)
 		queue_free()
 
+@onready var level_timer: Timer = $LevelTimer # shouldt stay this way
+
+# called from server, to authority and server
+@rpc("any_peer", "call_local")
+func gain_xp(new_xp: int) -> void:
+	if not multiplayer.get_remote_sender_id() == 1:
+		return
+	print("called at id: ", multiplayer.get_unique_id())
+	xp += new_xp
+	if xp > xp_per_level and multiplayer.is_server():
+		gain_level()
+		gain_level.rpc_id(get_multiplayer_authority())
+
+@rpc("any_peer", "call_local")
+func gain_level() -> void:
+	if not multiplayer.get_remote_sender_id() == 1:
+		return
+	pending_levels += 1
+
+@rpc("any_peer", "call_local")
+func level_up():
+	pending_levels -= 1
+	pass
 
 @onready var ping_timer: Timer = $PingTimer
 # the timers wait time is 10 sec

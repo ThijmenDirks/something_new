@@ -1,12 +1,12 @@
-res://assets/theme.tres::68c51edda6ed2bd1dbb6d3a5b4bfb874::1785567139::res://.godot/exported/133200997/export-2de1cf4e1c5e9a6784d5af7f7541a254-theme.res
+res://assets/theme.tres::68c51edda6ed2bd1dbb6d3a5b4bfb874::1785654025::res://.godot/exported/133200997/export-2de1cf4e1c5e9a6784d5af7f7541a254-theme.res
 res://level.tscn::059628fe50acc6ad59f72435ef0d10fe::1785228098::res://.godot/exported/133200997/export-d85448a68f01bbd6644b4b40ef87233e-level.scn
-res://root.tscn::c911adf3a2a9c0911729ae2f60c4eafa::1785567974::res://.godot/exported/133200997/export-6581cd44ca730c421bddc3302d6ce6cc-root.scn
+res://root.tscn::6297a744a5706690dcb4bc3773904450::1785654025::res://.godot/exported/133200997/export-6581cd44ca730c421bddc3302d6ce6cc-root.scn
 res://abilities/active_abilities/first_abilities/shadow_clone.tscn::82a5db714251bf1fe74054044311fa0f::1785353498::res://.godot/exported/133200997/export-b29da5d393c9186b1755f013d1d6a134-shadow_clone.scn
 res://abilities/active_abilities/first_abilities/shadow_clone_ability.tscn::b3d461123e4b6b2f313ed1e3ad144866::1785489914::res://.godot/exported/133200997/export-0f28ffaf5a950ae48a0b6715caea349c-shadow_clone_ability.scn
 res://abilities/active_abilities/second_abilities/fireball_ability.tscn::afb1378667fc92cb8953234674460c5a::1785401803::res://.godot/exported/133200997/export-fb193711cb8950e7bcbd255778c4ec86-fireball_ability.scn
 res://abilities/pasive_abilities/invis_escape.tscn::8ab0c5859204bf295e2544b016365fdd::1785401802::res://.godot/exported/133200997/export-cc372ad557f8d2229de185ebf93d9c16-invis_escape.scn
 res://player/interface.tscn::b7090e5eca5191e1fcec3619242db4ed::1785424504::res://.godot/exported/133200997/export-ebdc5125cbcd0951c081253fa3353de9-interface.scn
-res://player/player.tscn::190dbd1fd197d9681720de435d51ac9a::1785493049::res://.godot/exported/133200997/export-753d15e03e0182f9d550ac833b42bb41-player.scn
+res://player/player.tscn::190dbd1fd197d9681720de435d51ac9a::1785568658::res://.godot/exported/133200997/export-753d15e03e0182f9d550ac833b42bb41-player.scn
 res://spell_system/spells/fireball.tscn::5d1968efce851dbd78b07124dcdc41bd::1785350194::res://.godot/exported/133200997/export-7039e2d19ec6d59938c268a75beaff7f-fireball.scn
 res://spell_system/spell_drawer.tscn::1e0b9dd28e3b91eded16b8a95c2b58ca::1784115080::res://.godot/exported/133200997/export-ef8740b37cc0abc06a286557f597fc54-spell_drawer.scn
 res://items/hand_items/weapons/melee_weapons/melee_weapon.tscn::00c6bd9e006e9d4904906beecb101f44::1785252514::res://.godot/exported/133200997/export-520767191ba7ab955623883f610ce485-melee_weapon.scn

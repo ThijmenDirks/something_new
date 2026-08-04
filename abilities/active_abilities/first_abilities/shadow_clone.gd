@@ -35,10 +35,10 @@ func take_damage_server_side(damage: int) -> void:
 	if damage > 0:
 		die.rpc()
 
-@rpc("any_peer", "call_local")
+@rpc("authority", "call_local")
 func die() -> void:
-	#if not multiplayer.get_remote_sender_id() == 1:
-		#return
+	if not multiplayer.get_remote_sender_id() == 1:
+		return
 	my_ability.all_shadow_clones.erase(self)
 	queue_free()
 

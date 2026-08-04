@@ -82,7 +82,7 @@ func cast_spell() -> void:
 	visible = false
 	#spell_is_finished.emit()
 	#spell_input.clear()
-	get_parent().get_parent().spell_cast_system.cast_the_spell.rpc_id(1, spell_input)
+	get_parent().get_parent().spell_cast_system.cast_the_spell_first_part.rpc_id(1, spell_input)
 	return
 
 #func let_loose_touch() -> void:

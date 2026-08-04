@@ -7,12 +7,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0eqq"]
 radius = 100.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_txv2i"]
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_0ehjj"]
-font_size = 64
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_txv2i"]
 
 [node name="SpellDrawer" type="Control" unique_id=1961721061 node_paths=PackedStringArray("control")]
@@ -27,6 +21,8 @@ control = NodePath("VBoxContainer/Control")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1905481598]
 visible = false
+position = Vector2(969, 534.5)
+scale = Vector2(10.984375, 6.8828125)
 texture = ExtResource("2_1dfj0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=269024234]
@@ -63,13 +59,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer2/Control1/1" unique_id=1931567823]
 shape = SubResource("CircleShape2D_d0eqq")
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/Control1" unique_id=942191604]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "top left"
-label_settings = SubResource("LabelSettings_txv2i")
 
 [node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer2" unique_id=537072454]
 layout_mode = 2
@@ -281,13 +270,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer5/Control16/16" unique_id=1032177779]
 shape = SubResource("CircleShape2D_d0eqq")
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5/Control16" unique_id=620735787]
-layout_mode = 0
-offset_right = 121.0
-offset_bottom = 23.0
-text = "bottom right"
-label_settings = SubResource("LabelSettings_0ehjj")
 
 [node name="Particles" type="Node2D" parent="." unique_id=662915921]
 

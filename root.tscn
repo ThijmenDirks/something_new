@@ -13,11 +13,11 @@ texture = ExtResource("3_28aoi")
 [sub_resource type="LabelSettings" id="LabelSettings_28aoi"]
 font_size = 48
 
-[sub_resource type="LabelSettings" id="LabelSettings_jnlp7"]
-font_size = 40
-
 [sub_resource type="LabelSettings" id="LabelSettings_l8v81"]
 font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_jnlp7"]
+font_size = 40
 
 [node name="Root" type="Node" unique_id=655113354]
 script = ExtResource("1_pyidc")
@@ -108,7 +108,7 @@ offset_bottom = 445.0
 grow_horizontal = 2
 theme = ExtResource("2_vvh5c")
 theme_override_font_sizes/font_size = 256
-text = "Game Name"
+text = "Flemme"
 horizontal_alignment = 1
 
 [node name="Port" type="Label" parent="MainMenuStuff" unique_id=102088096]
@@ -129,6 +129,26 @@ offset_left = -161.0
 offset_top = 7.0
 offset_bottom = 79.0
 text = "Credits"
+
+[node name="LineEdit" type="LineEdit" parent="MainMenuStuff" unique_id=1921665943]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 473.0
+offset_right = 690.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 32
+text = "127.0.0.1"
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="Label" type="Label" parent="MainMenuStuff" unique_id=1149378355]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 412.0
+offset_right = 525.0
+offset_bottom = 457.0
+text = "IP address:"
+label_settings = SubResource("LabelSettings_l8v81")
 
 [node name="ColorRect" type="ColorRect" parent="MainMenuStuff" unique_id=1969085154]
 visible = false
@@ -165,24 +185,6 @@ text = "Credits:
 
 - Special thanks to familiy and friends."
 label_settings = SubResource("LabelSettings_jnlp7")
-
-[node name="LineEdit" type="LineEdit" parent="MainMenuStuff" unique_id=1921665943]
-layout_mode = 0
-offset_left = 341.0
-offset_top = 473.0
-offset_right = 690.0
-offset_bottom = 618.0
-text = "127.0.0.1"
-emoji_menu_enabled = false
-
-[node name="Label" type="Label" parent="MainMenuStuff" unique_id=1149378355]
-layout_mode = 0
-offset_left = 357.0
-offset_top = 412.0
-offset_right = 525.0
-offset_bottom = 457.0
-text = "IP address:"
-label_settings = SubResource("LabelSettings_l8v81")
 
 [node name="ConnectionTimer" type="Timer" parent="." unique_id=2112640522]
 wait_time = 5.0

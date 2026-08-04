@@ -2,13 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c5sl2kn4kjwuf" path="res://abilities/active_abilities/first_abilities/shadow_clone_ability.gd" id="1_ik5t0"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_riwqr"]
-[ext_resource type="PackedScene" uid="uid://dg35hfo8ls13f" path="res://abilities/active_abilities/first_abilities/shadow_clone.tscn" id="3_asgsa"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="3_wdxn2"]
 
 [node name="ShadowCloneAbility" type="Node2D" unique_id=2123557379]
 script = ExtResource("1_ik5t0")
 select_logo = ExtResource("2_riwqr")
+logo_frame = 71
 
-[node name="ShadowClone" parent="." unique_id=1262794763 instance=ExtResource("3_asgsa")]
+[node name="Logo" type="Sprite2D" parent="." unique_id=1608692752]
+texture = ExtResource("3_wdxn2")
+hframes = 10
+vframes = 10
+frame = 71
 
 [node name="CooldownTimer" type="Timer" parent="." unique_id=1339639294]
 wait_time = 5.0

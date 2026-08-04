@@ -38,7 +38,6 @@ func _on_second_ability_button_pressed() -> void:
 func _on_cast_spell_button_pressed() -> void:
 	if is_in_stats_menu:
 		return
-	pass
 	player.start_casting_spell()
 	#get_parent().get_node("SpellCastSystem")._on_cast_spell_button_pressed()
 

@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bpixwttwmguxw" path="res://player/stats_menu.gd" id="1_ffwu1"]
 [ext_resource type="PackedScene" uid="uid://b35oytowl220m" path="res://player/class_tree.tscn" id="1_ui8ke"]
+[ext_resource type="PackedScene" uid="uid://ct7l7spwhv6x2" path="res://player/stat_thingy.tscn" id="2_hywm4"]
 [ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_o4ci8"]
+[ext_resource type="Texture2D" uid="uid://f423j2srnckj" path="res://assets/Bg.png" id="3_eoolc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ffwu1"]
 font_size = 64
@@ -27,81 +29,124 @@ offset_bottom = 136.0
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1727149363]
 layout_mode = 2
 
-[node name="Itemstuff" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=548366492]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1132510707]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff" unique_id=1857354209]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1599790556]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer" unique_id=1440293745]
-layout_mode = 2
-texture = ExtResource("2_o4ci8")
-
-[node name="Equiped" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer" unique_id=1034220329]
+[node name="StatThingy" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1825178078 instance=ExtResource("2_hywm4")]
 layout_mode = 2
 
-[node name="leftHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=490036099]
+[node name="StatThingy2" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1638093083 instance=ExtResource("2_hywm4")]
 layout_mode = 2
-size_flags_horizontal = 3
+my_stat = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/leftHand" unique_id=1007317474]
+[node name="StatThingy3" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=418515389 instance=ExtResource("2_hywm4")]
 layout_mode = 2
-texture = ExtResource("2_o4ci8")
+my_stat = 2
 
-[node name="Armor" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=945163921]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1627992727]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "10"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/Armor" unique_id=2046107960]
-layout_mode = 2
-texture = ExtResource("2_o4ci8")
-
-[node name="RightHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=599113890]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2106874380]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/MarginContainer/Equiped/RightHand" unique_id=548864026]
+[node name="XPBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=323006235]
+layout_mode = 2
+size_flags_vertical = 3
+rounded = true
+nine_patch_stretch = true
+texture_under = ExtResource("2_o4ci8")
+texture_progress = ExtResource("2_o4ci8")
+tint_under = Color(0.17929766, 0.16871679, 0.41197085, 1)
+tint_progress = Color(0.15686275, 0.8745098, 0.58431375, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1043982321]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_eoolc")
+expand_mode = 1
+
+[node name="Itemstuff" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=548366492]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff" unique_id=1857354209]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer" unique_id=1440293745]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/Itemstuff" unique_id=1038387543]
+[node name="Equiped" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer" unique_id=1034220329]
+layout_mode = 2
+
+[node name="leftHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=490036099]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped/leftHand" unique_id=1007317474]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="Armor" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=945163921]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped/Armor" unique_id=2046107960]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="RightHand" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped" unique_id=599113890]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/MarginContainer/Equiped/RightHand" unique_id=548864026]
+layout_mode = 2
+texture = ExtResource("2_o4ci8")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff" unique_id=1038387543]
 layout_mode = 2
 columns = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=407902096]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=407902096]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1713627811]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=1713627811]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1059600415]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=1059600415]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1398501909]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=1398501909]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=826244281]
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=826244281]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=1459179430]
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=1459179430]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect7" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=898493117]
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=898493117]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect8" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=96563777]
+[node name="TextureRect8" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=96563777]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
-[node name="TextureRect9" type="TextureRect" parent="MarginContainer/HBoxContainer/Itemstuff/GridContainer" unique_id=676003224]
+[node name="TextureRect9" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Itemstuff/GridContainer" unique_id=676003224]
 layout_mode = 2
 texture = ExtResource("2_o4ci8")
 
@@ -127,7 +172,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PassiveAblity" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer" unique_id=1507043513]
+[node name="PassiveAbility" type="MarginContainer" parent="MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer" unique_id=1507043513]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -138,13 +183,30 @@ size_flags_vertical = 3
 [node name="ClassTree" parent="MarginContainer/HBoxContainer/Classtuff/MarginContainer" unique_id=2103230828 instance=ExtResource("1_ui8ke")]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="." unique_id=1185823551]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Classtuff" unique_id=1706127684]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="OtherButton" type="Control" parent="." unique_id=1383886575]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackButton" type="Button" parent="OtherButton" unique_id=1185823551]
 layout_mode = 0
 offset_left = 1753.0
 offset_top = 15.0
 offset_right = 1899.0
 offset_bottom = 128.0
 text = "Back"
+
+[node name="LevelUpButton" type="Button" parent="OtherButton" unique_id=302980566]
+layout_mode = 0
+offset_left = 1631.0
+offset_top = 677.0
+offset_right = 1849.0
+offset_bottom = 817.0
+text = "Level up"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=979306035]
 visible = false
@@ -156,6 +218,7 @@ offset_bottom = 783.0
 color = Color(0, 0, 0, 1)
 
 [node name="DebugLabel" type="Label" parent="." unique_id=1233496353]
+visible = false
 layout_mode = 0
 offset_left = 498.0
 offset_top = 191.0
@@ -166,4 +229,5 @@ DO NOT PRESS ANY BUTTON EXCEPT
 THE \"BACK\" BUTTON TOP RIGHT"
 label_settings = SubResource("LabelSettings_ffwu1")
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OtherButton/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OtherButton/LevelUpButton" to="." method="_on_level_up_button_pressed"]

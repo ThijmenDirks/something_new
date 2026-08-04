@@ -14,7 +14,7 @@ signal server_disconnected
 var PORT = 35432#35_000
 var DEFAULT_SERVER_IP = "192.168.178.212"#"82.74.204.141"#"127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
 #var DEFAULT_SERVER_IP = "82.74.204.141"#"127.0.0.1"#"192.168.2.8"#"127.0.0.1" # IPv4 localhost, replace with server
-const MAX_CONNECTIONS = 5
+const MAX_CONNECTIONS = 10
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.

@@ -1,15 +1,44 @@
 [gd_scene format=3 uid="uid://cy0uvws2r22qf"]
 
 [ext_resource type="Script" uid="uid://1tqai0lre2px" path="res://player/ability_select_button.gd" id="1_162jr"]
-[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="2_tvclq"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_tvclq"]
 
 [node name="AbilitySelectButton" type="TextureButton" unique_id=1214671612]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 136.0
+offset_bottom = 136.0
 script = ExtResource("1_162jr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347977129]
 z_index = -1
+position = Vector2(63, 63)
 texture = ExtResource("2_tvclq")
+hframes = 10
+vframes = 10
+frame = 90
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=652153892]
+visible = false
+layout_mode = 0
+offset_right = 162.0
+offset_bottom = 160.0
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=2020366048]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=441019548]
+layout_mode = 2
+text = "info about the ability"
+
+[node name="UnlockButton" type="Button" parent="VBoxContainer" unique_id=1118793036]
+visible = false
+layout_mode = 2
+text = "Unlock"
+
+[node name="PickButton" type="Button" parent="VBoxContainer" unique_id=1772771841]
+visible = false
+layout_mode = 2
+text = "Pick"
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/UnlockButton" to="." method="_on_unlock_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PickButton" to="." method="_on_pick_button_pressed"]

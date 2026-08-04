@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://clnan45f7lshk"]
+
+[ext_resource type="Script" uid="uid://bhbo3jrmmrc1f" path="res://invis_escape_ability.gd" id="1_vl1hw"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="2_wn1gs"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="3_wn1gs"]
+
+[node name="InvisEscapeAbility" type="Node2D" unique_id=1045013220]
+script = ExtResource("1_vl1hw")
+select_logo = ExtResource("2_wn1gs")
+logo_frame = 48
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=113520575]
+texture = ExtResource("3_wn1gs")
+hframes = 10
+vframes = 10
+frame = 48
+
+[node name="Timer" type="Timer" parent="." unique_id=1630388444]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,6 +9,8 @@ var amount_of_clones: int = 5
 
 @export var all_shadow_clones: Array[CharacterBody2D]
 
+#func _process(delta: float) -> void:
+	#print("autho: ", get_multiplayer_authority())
 
 func _enter_tree() -> void:
 	super()
@@ -43,7 +45,7 @@ func spawn_new_shadow_clone() -> void:
 	var new_shadow_clone = SHADOW_CLONE.instantiate()
 	new_shadow_clone.velocity_offset = randf_range(0, TAU)
 	new_shadow_clone.visible = true
-	new_shadow_clone.global_position = global_position
+	new_shadow_clone.global_position = my_owner.global_position
 
 	new_shadow_clone.hp_bar.value = my_owner.hp_bar.value
 	new_shadow_clone.player_id_label.text = my_owner.player_id_label.text
@@ -55,7 +57,8 @@ func spawn_new_shadow_clone() -> void:
 	new_shadow_clone.set_multiplayer_authority(1)
 	all_shadow_clones.append(new_shadow_clone)
 	#new_shadow_clone.set_multiplayer_authority(get_multiplayer_authority())
-	get_parent().get_parent().get_parent().get_parent().add_child(new_shadow_clone, true)
+	#get_parent().get_parent().get_parent().get_parent().add_child(new_shadow_clone, true)
+	my_owner.get_parent().get_parent().add_child(new_shadow_clone, true)
 
 
 @rpc("any_peer", "call_local")
@@ -101,3 +104,8 @@ func send_message(args: Array) -> Array:
 	for clone in all_shadow_clones:
 		clone.send_message(message)
 	return args
+
+
+func get_removed() -> void:
+	for clone in all_shadow_clones.duplicate():
+		clone.die.rpc()

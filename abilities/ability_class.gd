@@ -7,12 +7,14 @@ var is_in_use: bool = false
 
 @export var allows_spellcasting: bool = false
 @export var select_logo: Texture
+@export var logo_frame: int
 
 func _enter_tree() -> void:
-	my_owner = get_parent().get_parent().get_parent()
+	my_owner = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
 
-func get_added():
-	pass
+func get_added() -> void:
+	my_owner = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()
+	set_multiplayer_authority(my_owner.get_multiplayer_authority())
 
-func get_removed():
-	pass
+func get_removed() -> void:
+	queue_free()

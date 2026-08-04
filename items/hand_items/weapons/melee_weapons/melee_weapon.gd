@@ -26,6 +26,7 @@ func request_get_used() -> void:
 
 	if timer.time_left == 0:
 		timer.start()
+		var base_damage: int = max_damage + my_owner.strength
 		for body in get_overlapping_bodies():
 			if body == my_owner:
 				continue
@@ -43,5 +44,5 @@ func get_damage_from_angle(angle) -> int:
 func get_used_verified() -> void:
 	if not is_multiplayer_authority() or not multiplayer.get_remote_sender_id() == 1:
 		return
-	#3 play some animation ?
+	# play some animation ?
 	timer.start()
