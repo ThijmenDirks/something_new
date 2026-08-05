@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cxujxn606u0ou"]
+
+[ext_resource type="Script" uid="uid://dib4j33w8vvhy" path="res://abilities/active_abilities/second_abilities/trap_ability.gd" id="1_a3n62"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_lrlqk"]
+
+[node name="TrapAbility" type="Node2D" unique_id=1382523742]
+script = ExtResource("1_a3n62")
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1280937500]
+texture = ExtResource("2_lrlqk")
+hframes = 10
+vframes = 10
+frame = 35
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1391739205]
+one_shot = true

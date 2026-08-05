@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://2soo02rmcp6h"]
+
+[ext_resource type="Script" uid="uid://bakqva8jrdoin" path="res://abilities/active_abilities/first_abilities/channel_energy_ability.gd" id="1_1dw80"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_u20hr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1dw80"]
+radius = 800.0
+
+[node name="ChannelEnergyAbility" type="Node2D" unique_id=1897695719]
+script = ExtResource("1_1dw80")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=205080948]
+visible = false
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=116974782]
+shape = SubResource("CircleShape2D_1dw80")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2054704070]
+wait_time = 5.0
+one_shot = true
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=543473487]
+texture = ExtResource("2_u20hr")
+hframes = 10
+vframes = 10
+frame = 5

@@ -10,8 +10,8 @@ enum TYPE {
 
 #@export var my_ability: PackedScene
 @export var my_ability_name: String
-@export var my_ability: Dictionary
-@export var type: TYPE
+var my_ability: Dictionary
+var type: TYPE
 @export var is_unlocked: bool = false
 
 func _enter_tree() -> void:

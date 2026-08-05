@@ -17,11 +17,11 @@ func request_get_used() -> void:
 		return
 	cooldown_timer.start()
 	get_used_verified.rpc_id(multiplayer.get_remote_sender_id())
-	my_owner.spell_cast_system.limited_spell_list = [SpellDatabse.fireball]
+	my_owner.spell_cast_system.limited_spell_list = [SpellDatabse.fireball_for_ability]
 	my_owner.spell_cast_system.used_from_ability = 2
 
 	#my_owner.spell_cast_system.start_casting_spell.rpc_id(multiplayer.get_remote_sender_id())
-	my_owner.spell_cast_system.start_casting_spell.rpc_id(1, [SpellDatabse.fireball])
+	my_owner.spell_cast_system.start_casting_spell.rpc_id(1, [SpellDatabse.fireball_for_ability])
 
 @rpc("any_peer", "call_local")
 func get_used_verified() -> void:

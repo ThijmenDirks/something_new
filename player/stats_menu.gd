@@ -16,10 +16,11 @@ extends Control
 
 var is_leveling: bool = false
 
-var inventory_items: Array[Item]
+var inventory_items: Array[Item] # now has its own script
 
 @onready var my_owner: Player = get_parent().get_parent()
 @onready var stat_thingies: HBoxContainer = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer
+@onready var inventory: VBoxContainer = $MarginContainer/HBoxContainer/VBoxContainer/Inventory
 
 func _enter_tree() -> void:
 	#my_owner = get_parent().get_parent()
@@ -31,6 +32,7 @@ func setup():
 		set_levelup_button_visibility(true)
 	else:
 		set_levelup_button_visibility(false)
+	inventory.setup()
 	visible = true
 
 
@@ -59,7 +61,7 @@ func change_ability_server_side(ability: StringName):
 	if new_ability:
 		if new_ability is FirstAbility:
 			#var target_node: Node2D = get_parent().get_parent().first_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/FristAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FristAbility
 			if target_node.get_child_count() != 0:
 				target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -67,7 +69,7 @@ func change_ability_server_side(ability: StringName):
 			new_ability.get_added()
 		elif new_ability is SecondAbility:
 			#var target_node: Node2D = get_parent().get_parent().second_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/SecondAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/SecondAbility
 			if target_node.get_child_count() != 0:
 				target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -75,17 +77,17 @@ func change_ability_server_side(ability: StringName):
 			new_ability.get_added()
 		elif new_ability is PassiveAbility:
 			#var target_node: Node2D = get_parent().get_parent().passive_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/PassiveAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/PassiveAbility
 			if target_node.get_child_count() != 0:
 				target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
 			target_node.add_child(new_ability)
 			new_ability.get_added()
-	change_ability_client_side.rpc_id(get_multiplayer_authority(), ability)
+	#change_ability_client_side.rpc_id(get_multiplayer_authority(), ability)
 	change_ability_client_side.rpc(ability)
 
 
-@rpc("any_peer", "call_local")
+@rpc("any_peer", "call_remote")
 func change_ability_client_side(ability):
 	if not multiplayer.get_remote_sender_id() == 1:# or not is_multiplayer_authority():
 		return
@@ -94,7 +96,7 @@ func change_ability_client_side(ability):
 	if new_ability:
 		if new_ability is FirstAbility:
 			#var target_node: Node2D = get_parent().get_parent().first_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/FristAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FristAbility
 			if target_node.get_child_count() != 0:
 				#target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -102,7 +104,7 @@ func change_ability_client_side(ability):
 			new_ability.get_added()
 		elif new_ability is SecondAbility:
 			#var target_node: Node2D = get_parent().get_parent().second_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/SecondAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/SecondAbility
 			if target_node.get_child_count() != 0:
 				#target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -110,7 +112,7 @@ func change_ability_client_side(ability):
 			new_ability.get_added()
 		elif new_ability is PassiveAbility:
 			#var target_node: Node2D = get_parent().get_parent().passive_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/PassiveAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/PassiveAbility
 			if target_node.get_child_count() != 0:
 				#target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -124,6 +126,11 @@ func change_stat(stat: int, amount: int) -> void:
 	if stat == 0:
 		strength += amount
 		stat_thingies.get_child(0).amount_label.text = str(strength)
+		max_hp += amount
+		current_hp += amount
+		if current_hp <= 0 and current_hp - amount > 0:
+			current_hp = 1
+		my_owner.update_hp(current_hp)
 		if strength <= 0:
 			my_owner.die_server_side()
 	if stat == 1:

@@ -29,15 +29,19 @@ class_name Player extends CharacterBody2D
 @onready var stats_menu: Control = $Interface/StatsMenu
 @onready var right_hand_node: Node2D = $Items/RightHand
 @onready var left_hand_node: Node2D = $Items/LeftHand
-@onready var first_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/FristAbility#$Abilities/FirstAbility
-@onready var second_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/SecondAbility
-@onready var passive_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SlectedClasses/HBoxContainer/PassiveAbility
+@onready var first_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FirstAbility#$Abilities/FirstAbility
+@onready var second_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/SecondAbility
+@onready var passive_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/PassiveAbility
 @onready var hp_bar: TextureProgressBar = $HPBar
 
 @export var sync_pos: Vector2 = Vector2.ZERO
 
+@onready var ability_areas: Node2D = $AbilityAreas
 
 var can_cast_spells: bool = false
+
+var can_cast_arcane_spells: int = 3
+var can_cast_divine_spells: int = 3
 
 var uses_touchscreen: bool = false
 
@@ -201,6 +205,19 @@ func update_stat(stat: int, amount: int) -> void:
 			die_server_side()
 	#stats_menu.update_stat(stat, amount)
 
+# not a rpc, will only be called from server
+func take_damage_server_side(damage: int, from: Player) -> void:
+	#for the actual damage
+	if not multiplayer.is_server():
+		return
+	damage = ability_handler("take_damage_server_side", [damage, from])[0]
+	take_damage_client_side.rpc_id(get_multiplayer_authority(), damage)
+	current_hp -= damage
+	update_hp.rpc(current_hp)
+	from.has_done_damage(damage, self)
+	if current_hp <= 0:
+		die_server_side()
+		die_client_side.rpc_id(get_multiplayer_authority())
 
 @rpc("any_peer", "call_local")
 func take_damage_client_side(damage: int) -> void:
@@ -209,24 +226,42 @@ func take_damage_client_side(damage: int) -> void:
 		return
 	pass
 
+func has_done_damage(damage: int, to: Player) -> void:
+	ability_handler("has_done_damage", [damage, to])
 
-# not a rpc, will only be called from server
-func take_damage_server_side(damage: int) -> void:
-	#for the actual damage
+func take_healing_server_side(healing: int, from: Player) -> void:
+	#for the actual healing
 	if not multiplayer.is_server():
 		return
-	damage = ability_handler("take_damage_server_side", [damage])[0]
-	take_damage_client_side.rpc_id(get_multiplayer_authority(), damage)
-	current_hp -= damage
+	#if not is_multiplayer_authority():
+		#print("serer takes healing: ", healing)
+	healing = ability_handler("take_healing_server_side", [healing])[0]
+	take_healing_client_side.rpc_id(get_multiplayer_authority(), healing)
+	current_hp += healing
+	from.has_done_healing(healing, self)
+	if current_hp > max_hp:
+		current_hp = max_hp
 	update_hp.rpc(current_hp)
-	if current_hp <= 0:
-		die_server_side()
-		die_client_side.rpc_id(get_multiplayer_authority())
 
 @rpc("any_peer", "call_local")
-func update_hp(new_hp) -> void:
+func take_healing_client_side(healing: int) -> void:
+	# only to show animation and such, idk what exaclty
 	if not multiplayer.get_remote_sender_id() == 1:
 		return
+	pass
+
+
+func has_done_healing(healing: int, to: Player) -> void:
+	pass
+
+@rpc("any_peer", "call_local")
+func update_hp(new_hp: int, new_max_hp: int = -1) -> void:
+	if not multiplayer.get_remote_sender_id() == 1:
+		return
+	if new_max_hp == 0:
+		max_hp = 1
+	elif new_max_hp != -1:
+		max_hp = new_max_hp
 	current_hp = new_hp
 	hp_bar.value = current_hp
 
@@ -243,6 +278,9 @@ func die_client_side() -> void:
 
 func start_casting_spell(limited_spell_list: Array[Dictionary] = []) -> void:
 	spell_cast_system.start_casting_spell.rpc_id(1, limited_spell_list)
+
+func add_spell(new_spell: Dictionary) -> void:
+	spell_cast_system.equiped.append(new_spell)
 
 func send_message(message: String):
 	ability_handler("send_message", [message]) # used by: shadow clone
@@ -297,6 +335,18 @@ func gain_level() -> void:
 func level_up():
 	pending_levels -= 1
 	pass
+
+
+
+#@onready var pickup_area: Area2D = $PickupArea
+#
+#func _on_pickup_area_area_entered(_area: Area2D) -> void:
+	#interface.show_pickup_item_button()
+#
+#func _on_pickup_area_area_exited(_area: Area2D) -> void:
+	#if pickup_area.get_overlapping_areas().is_empty():
+		#interface.hide_pickup_item_button()
+
 
 @onready var ping_timer: Timer = $PingTimer
 # the timers wait time is 10 sec

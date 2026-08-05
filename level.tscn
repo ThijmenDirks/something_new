@@ -44,10 +44,11 @@ position = Vector2(1216, -173)
 
 [node name="BackGround" type="Sprite2D" parent="." unique_id=1641398578]
 z_index = -1
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 texture = ExtResource("3_oi3di")
 
 [node name="Border" type="StaticBody2D" parent="." unique_id=158865857]
+scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
 

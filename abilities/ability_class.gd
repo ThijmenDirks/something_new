@@ -5,9 +5,10 @@ var my_owner: Player
 var is_unlocked: bool = false
 var is_in_use: bool = false
 
-@export var allows_spellcasting: bool = false
+@export var allows_arcane_spellcasting: int = 0
+@export var allows_divine_spellcasting: int = 0
 @export var select_logo: Texture
-@export var logo_frame: int
+#@export var logo_frame: int
 
 func _enter_tree() -> void:
 	my_owner = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent()

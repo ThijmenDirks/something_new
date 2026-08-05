@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dlkfrdhtydfb4"]
+
+[ext_resource type="Script" uid="uid://cxd4dwyilrt4t" path="res://player/pickup_menu.gd" id="1_guysv"]
+
+[node name="PickupMenu" type="Control" unique_id=1560029658]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_guysv")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1721181441]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

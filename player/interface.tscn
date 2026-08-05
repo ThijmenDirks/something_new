@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
 [ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="5_nusud"]
 [ext_resource type="PackedScene" uid="uid://b1hx26pwp02t7" path="res://player/stats_menu.tscn" id="5_teo7p"]
+[ext_resource type="PackedScene" uid="uid://dlkfrdhtydfb4" path="res://player/pickup_menu.tscn" id="7_25mc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtnh6"]
 size = Vector2(200, 200)
@@ -20,6 +21,9 @@ size = Vector2(200, 200)
 size = Vector2(200, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jyopb"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjcx7"]
 size = Vector2(200, 200)
 
 [sub_resource type="LabelSettings" id="LabelSettings_mtnh6"]
@@ -180,7 +184,17 @@ text = "cast spell"
 texture = ExtResource("5_nusud")
 hframes = 10
 vframes = 10
-frame = 31
+frame = 32
+
+[node name="PickUpItemButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=761313549]
+position = Vector2(1120, 660)
+shape = SubResource("RectangleShape2D_tjcx7")
+
+[node name="Sprite2D" type="Sprite2D" parent="TouchScreenButtons/PickUpItemButton" unique_id=258887259]
+texture = ExtResource("5_nusud")
+hframes = 10
+vframes = 10
+frame = 61
 
 [node name="PingLabel" type="Label" parent="." unique_id=1695131898]
 offset_left = 478.0
@@ -204,9 +218,12 @@ text = "Stats
 [node name="StatsMenu" parent="." unique_id=681272594 instance=ExtResource("5_teo7p")]
 visible = false
 
+[node name="DEPRECATEDPickupMenu" parent="." unique_id=1560029658 instance=ExtResource("7_25mc0")]
+
 [connection signal="pressed" from="TouchScreenButtons/RightHandButton" to="." method="_on_right_hand_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/LeftHandButton" to="." method="_on_left_hand_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/FirstAbilityButton" to="." method="_on_first_ability_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/SecondAbilityButton" to="." method="_on_second_ability_button_pressed"]
 [connection signal="pressed" from="TouchScreenButtons/CastSpellButton" to="." method="_on_cast_spell_button_pressed"]
+[connection signal="pressed" from="TouchScreenButtons/PickUpItemButton" to="." method="_on_pick_up_item_button_pressed"]
 [connection signal="pressed" from="StatsMenuButton" to="." method="_on_stats_menu_button_pressed"]

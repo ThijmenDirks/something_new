@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c516m7ha6076b"]
+
+[ext_resource type="Script" uid="uid://d0toerj68cymc" path="res://items/scrolls/scroll_of_fireball.gd" id="1_mrau7"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_pu7f4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu7f4"]
+size = Vector2(13, 13)
+
+[node name="ScrollOfFireball" type="Area2D" unique_id=1318085490]
+script = ExtResource("1_mrau7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=338951746]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_pu7f4")
+hframes = 10
+vframes = 10
+frame = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2122876982]
+shape = SubResource("RectangleShape2D_pu7f4")

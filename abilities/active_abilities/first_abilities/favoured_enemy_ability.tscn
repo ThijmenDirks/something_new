@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b167a8xd7hpej"]
+
+[ext_resource type="Script" uid="uid://bf5wr12whv53p" path="res://abilities/active_abilities/first_abilities/favoured_enemy_ability.gd" id="1_0hee7"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_lnmjp"]
+
+[node name="FavouredEnemyAbility" type="Node2D" unique_id=148494025]
+script = ExtResource("1_0hee7")
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1456346702]
+wait_time = 3.0
+one_shot = true
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1815378348]
+texture = ExtResource("2_lnmjp")
+hframes = 10
+vframes = 10
+frame = 20

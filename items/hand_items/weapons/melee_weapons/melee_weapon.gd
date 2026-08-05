@@ -27,6 +27,7 @@ func request_get_used() -> void:
 	if timer.time_left == 0:
 		timer.start()
 		var base_damage: int = max_damage + my_owner.strength
+		max_damage = base_damage
 		for body in get_overlapping_bodies():
 			if body == my_owner:
 				continue
@@ -35,7 +36,7 @@ func request_get_used() -> void:
 				var damage: int = get_damage_from_angle(angle_weapon_to_target)
 				print("body: ", body, " will take ", damage, " damage ", multiplayer.get_peers())
 				# can only be called from server, and will be called to server, so no rpc needed
-				body.take_damage_server_side(damage)
+				body.take_damage_server_side(damage, my_owner)
 
 func get_damage_from_angle(angle) -> int:
 	return round(max_damage * cos(angle))

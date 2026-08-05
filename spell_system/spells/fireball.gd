@@ -48,7 +48,7 @@ func explode_physics() -> void:
 	var damage = base_damage
 	explosion.visible = true
 	for body in explosion.get_overlapping_bodies():
-		body.take_damage_server_side(damage)
+		body.take_damage_server_side(damage, caster)
 
 # these tree are for debug,to make the explosion visible
 	#await get_tree().physics_frame

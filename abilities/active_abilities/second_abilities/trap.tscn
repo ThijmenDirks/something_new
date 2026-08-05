@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://287nwhf4d0xl"]
+
+[ext_resource type="Script" uid="uid://daffjk0b30wtd" path="res://abilities/active_abilities/second_abilities/trap.gd" id="1_ij4fv"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="1_pphk3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lrlqk"]
+radius = 70.34913
+
+[node name="Trap" type="Area2D" unique_id=739503267]
+collision_layer = 0
+script = ExtResource("1_ij4fv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=864611489]
+shape = SubResource("CircleShape2D_lrlqk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1059823320]
+skew = 0.87266463
+texture = ExtResource("1_pphk3")
+hframes = 10
+vframes = 10
+frame = 35
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

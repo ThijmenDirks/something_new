@@ -37,6 +37,7 @@ func add_projectile(_selected_projectile = null) -> void:
 		if shooter == null:
 			shooter = my_owner
 		new_projectile.shooter = shooter
+		new_projectile.speed += (shooter.dexterity - 10) * 20
 		new_projectile.global_position = global_position
 		new_projectile.direction = Vector2(cos(rotation), sin(rotation))
 		new_projectile.rotation = new_projectile.direction.angle()

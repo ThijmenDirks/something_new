@@ -239,6 +239,9 @@ cache/0/32/0/scale = 1.0
 font = SubResource("FontFile_65viv")
 font_size = 32
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebec5"]
+radius = 200.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1913585745 node_paths=PackedStringArray("animation_player", "animated_sprite_2d")]
 collision_mask = 4
 motion_mode = 1
@@ -360,5 +363,16 @@ texture = ExtResource("2_2ieo8")
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=93158327]
 
+[node name="AbilityAreas" type="Node2D" parent="." unique_id=500138047]
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=303618298]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=272004581]
+shape = SubResource("CircleShape2D_ebec5")
+
 [connection signal="timeout" from="SpellCastSystem/AimTimer" to="SpellCastSystem" method="_on_aim_timer_timeout"]
 [connection signal="timeout" from="PingTimer" to="." method="_on_ping_timer_timeout"]
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cpehpgksbvdmy"]
+
+[ext_resource type="Script" uid="uid://dyke56rri7g7w" path="res://abilities/active_abilities/first_abilities/favoured_enemy_pointer.gd" id="1_heuww"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_vri41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_heuww"]
+radius = 800.0
+
+[node name="FavouredEnemyPointer" type="Area2D" unique_id=736473056]
+collision_layer = 0
+script = ExtResource("1_heuww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=466800368]
+shape = SubResource("CircleShape2D_heuww")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1201772269]
+texture = ExtResource("2_vri41")
+hframes = 10
+vframes = 10
+frame = 6

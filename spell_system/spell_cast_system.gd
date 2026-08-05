@@ -5,7 +5,7 @@ const FIREBALL = preload("uid://dsxug0ov6dms5") #debugg
 @onready var spell_drawer: Control = $"../Interface/SpellDrawer"
 @onready var aim_timer: Timer = $AimTimer
 
-@export var all_equiped_spells: Array[Dictionary]
+@export var all_equiped_spells: Array[Dictionary] = [SpellDatabse.fireball_for_ability]
 
 #var spell_input: Array[int] # might get un-global
 var selected_spell: Spell
@@ -60,7 +60,12 @@ func get_spell_by_spell_input(input: Array[int]) -> Dictionary:
 	else:
 		for spell: Dictionary in all_equiped_spells:
 			if spell.input_code == input:
-				spell_that_will_cast = spell
+				if spell["is_arcane_otherwise_divine"]:
+					if get_parent().can_cast_arcane_spells >= spell["level"]:
+						spell_that_will_cast = spell
+				else:
+					if get_parent().can_cast_divine_spells >= spell["level"]:
+						spell_that_will_cast = spell
 				break
 	return spell_that_will_cast
 

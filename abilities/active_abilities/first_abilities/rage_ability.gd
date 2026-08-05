@@ -33,9 +33,12 @@ func get_used_client_side() -> void:
 	my_owner.strength += 5
 	duration_timer.start()
 	add_label_for_debug()
+	if my_owner.is_multiplayer_authority():
+		cooldown_timer.start()
 
 @rpc("any_peer", "call_local")
 func end_rage():
+	#ALERT are the next two lines needed ?
 	if not is_inside_tree():
 		return
 	if (not multiplayer.get_remote_sender_id() == 1) and (not is_multiplayer_authority()):

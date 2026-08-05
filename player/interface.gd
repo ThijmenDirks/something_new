@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var ping_label: Label = $PingLabel
 @onready var stats_menu: Control = $StatsMenu
 @onready var joystick: Control = $TouchScreenButtons/Joystick
+#@onready var pick_up_item_button: TouchScreenButton = $TouchScreenButtons/PickUpItemButton
+#@onready var pickup_menu: Control = $PickupMenu
 
 var is_in_stats_menu: bool = false
 
@@ -11,7 +13,6 @@ var player: Player
 
 func _ready() -> void:
 	player = get_parent()
-
 
 
 func _on_right_hand_button_pressed() -> void:

@@ -34,7 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 func hit_physics(target: Node):
 	if multiplayer.is_server():
 		if target is CharacterBody2D:
-			target.take_damage_server_side(damage)
+			target.take_damage_server_side(damage, shooter)
 
 @rpc("call_local")
 func hit_draw_stuff():
