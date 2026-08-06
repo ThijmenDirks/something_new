@@ -2,6 +2,7 @@ class_name Item extends Area2D # Might gonna extend something else, in which cas
 
 #var my_owner: Node
 @onready var my_owner: Player# = get_parent().get_parent().get_parent()
+@export var my_dic: Dictionary # not sure wheter this will be used
 
 func _enter_tree() -> void:
 	my_owner = get_parent().get_parent().get_parent()

@@ -34,7 +34,6 @@ func _ready() -> void:
 
 @rpc("any_peer", "call_local")
 func setup():
-	print("test 8")
 	spell_input.clear()
 	visible = true
 	finger_area.position = Vector2.ZERO
@@ -46,7 +45,7 @@ func _input(event: InputEvent) -> void:
 	#if not visible:
 		#return
 	if is_touching:
-		print("is touching")
+		#print("is touching")
 		if event is InputEventScreenDrag:
 			var drag_position: Vector2 = event.position - position
 			cpu_particles_2d.position = drag_position
@@ -62,10 +61,10 @@ func _process(_delta: float) -> void:
 	if not visible:
 		return
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		print("is pressing")
+		#print("is pressing")
 		is_touching = true
 	else:
-		print("is not touching")
+		#print("is not touching")
 		if is_touching:
 			if is_first_release:#
 				cpu_particles_2d.restart()

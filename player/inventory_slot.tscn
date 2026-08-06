@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://desjwamfba0fx"]
+
+[ext_resource type="Script" uid="uid://csjm3ud30dynk" path="res://player/inventory_slot.gd" id="1_dmxh7"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_a278m"]
+[ext_resource type="Texture2D" uid="uid://duvc1h3v4qe0f" path="res://assets/icon.svg" id="3_s7k62"]
+
+[node name="InventorySlot" type="PanelContainer" unique_id=355693652]
+offset_right = 128.0
+offset_bottom = 128.0
+script = ExtResource("1_dmxh7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=819827561]
+layout_mode = 2
+texture = ExtResource("3_s7k62")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1591999277]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=1878475297]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2115042775]
+position = Vector2(63, 63)
+texture = ExtResource("2_a278m")
+hframes = 10
+vframes = 10
+frame = 90
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

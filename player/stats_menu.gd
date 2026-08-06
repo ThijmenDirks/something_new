@@ -21,13 +21,14 @@ var inventory_items: Array[Item] # now has its own script
 @onready var my_owner: Player = get_parent().get_parent()
 @onready var stat_thingies: HBoxContainer = $MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer
 @onready var inventory: VBoxContainer = $MarginContainer/HBoxContainer/VBoxContainer/Inventory
+@onready var info_tab: Control = $OtherButton/InfoTab
 
 func _enter_tree() -> void:
 	#my_owner = get_parent().get_parent()
 	pass
 
 func setup():
-	get_items_from_server.rpc_id(1)
+	#get_items_from_server.rpc_id(1)
 	if pending_levels:
 		set_levelup_button_visibility(true)
 	else:
@@ -36,17 +37,17 @@ func setup():
 	visible = true
 
 
-@rpc("any_peer", "call_local")
-func fill_inventory(items: Array):
-	if not multiplayer.get_remote_sender_id() == 1 or not is_multiplayer_authority():
-		return
-
-
-@rpc("authority", "call_local")
-func get_items_from_server():
-	if not multiplayer.is_server() or not multiplayer.get_remote_sender_id() == get_multiplayer_authority():
-		return
-	fill_inventory.rpc_id(get_multiplayer_authority(), inventory_items)
+#@rpc("any_peer", "call_local")
+#func fill_inventory(items: Array):
+	#if not multiplayer.get_remote_sender_id() == 1 or not is_multiplayer_authority():
+		#return
+#
+#
+#@rpc("authority", "call_local")
+#func get_items_from_server():
+	#if not multiplayer.is_server() or not multiplayer.get_remote_sender_id() == get_multiplayer_authority():
+		#return
+	#fill_inventory.rpc_id(get_multiplayer_authority(), inventory_items)
 
 func set_levelup_button_visibility(to: bool) -> void:
 	$OtherButton/LevelUpButton.visible = to
@@ -61,7 +62,7 @@ func change_ability_server_side(ability: StringName):
 	if new_ability:
 		if new_ability is FirstAbility:
 			#var target_node: Node2D = get_parent().get_parent().first_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FristAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FirstAbility
 			if target_node.get_child_count() != 0:
 				target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))
@@ -96,7 +97,7 @@ func change_ability_client_side(ability):
 	if new_ability:
 		if new_ability is FirstAbility:
 			#var target_node: Node2D = get_parent().get_parent().first_ability_node
-			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FristAbility
+			var target_node: Control = $MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FirstAbility
 			if target_node.get_child_count() != 0:
 				#target_node.get_child(0).get_removed()
 				target_node.remove_child(target_node.get_child(0))

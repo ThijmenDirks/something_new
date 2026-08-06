@@ -25,8 +25,8 @@ config/icon="res://assets/icon.svg"
 NetworkManager="*res://autoloads/network_manager.gd"
 GameManager="*res://autoloads/game_manager.gd"
 SpellDatabse="*uid://cwfjjbxyvpang"
-ServerScript="*uid://b07tryh2aomcq"
 AbilityDatabse="*uid://1cenyj1sl8ja"
+ItemDatabase="*uid://exm6afojva7u"
 
 [display]
 

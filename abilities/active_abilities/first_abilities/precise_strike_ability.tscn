@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c0ov2si75j6hx"]
+
+[ext_resource type="Script" uid="uid://df1r4udk0u6mx" path="res://abilities/active_abilities/first_abilities/precise_strike_ability.gd" id="1_cir1k"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_v1rvv"]
+
+[node name="PreciseStrikeAbility" type="Node2D" unique_id=2033273772]
+script = ExtResource("1_cir1k")
+
+[node name="Logo" type="Sprite2D" parent="." unique_id=1969684069]
+texture = ExtResource("2_v1rvv")
+hframes = 10
+vframes = 10
+frame = 75
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=219039406]
+wait_time = 5.0
+one_shot = true
+
+[node name="DurationTimer" type="Timer" parent="." unique_id=294090198]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="DurationTimer" to="." method="_on_duration_timer_timeout"]

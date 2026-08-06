@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c8y8erv1pic04"]
+
+[ext_resource type="Script" uid="uid://48k47dyocvou" path="res://items/ground_item.gd" id="1_qh6ar"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_aif6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lv53"]
+
+[node name="GroundItem" type="Area2D" unique_id=514298677]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_qh6ar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1880779407]
+shape = SubResource("RectangleShape2D_7lv53")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1061478553]
+texture = ExtResource("2_aif6j")
+hframes = 10
+vframes = 10

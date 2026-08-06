@@ -1,7 +1,9 @@
+res://spell_system/spells/
+res://assets/
 res://abilities/active_abilities/first_abilities/
-res://abilities/active_abilities/second_abilities/
-res://player/
 res://items/
+res://player/
+res://abilities/active_abilities/second_abilities/
 res://abilities/
 C:/Users/dirks/Godot/kinda_finished/soething_new_uploads/
 C:/Users/dirks/Godot/kinda_finished/soething_new_uploads/02-08/
@@ -14,6 +16,4 @@ C:/Users/dirks/Godot/kinda_finished/something_new_android_try_1/
 res://items/hand_items/weapons/ranged_weapons/projectiles/
 res://server_stuff/
 res://spell_system/
-res://spell_system/spells/
-res://assets/
 res://

@@ -37,6 +37,7 @@ class_name Player extends CharacterBody2D
 @export var sync_pos: Vector2 = Vector2.ZERO
 
 @onready var ability_areas: Node2D = $AbilityAreas
+@onready var pickup_area: Area2D = $PickupArea
 
 var can_cast_spells: bool = false
 
@@ -338,7 +339,6 @@ func level_up():
 
 
 
-#@onready var pickup_area: Area2D = $PickupArea
 #
 #func _on_pickup_area_area_entered(_area: Area2D) -> void:
 	#interface.show_pickup_item_button()

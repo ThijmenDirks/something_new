@@ -46,5 +46,5 @@ func spawn_all_players():
 
 func _on_xp_timer_timeout() -> void:
 	for player: Player in players.get_children():
-		player.stats_menu.gain_xp.rpc(102)
+		player.stats_menu.gain_xp.rpc(2)
 	print("everyone got xp !")

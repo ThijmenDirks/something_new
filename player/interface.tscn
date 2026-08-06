@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cynlug4k86dy2" path="res://player/joystick.gd" id="4_mtnh6"]
 [ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="5_nusud"]
 [ext_resource type="PackedScene" uid="uid://b1hx26pwp02t7" path="res://player/stats_menu.tscn" id="5_teo7p"]
+[ext_resource type="Texture2D" uid="uid://cyj8vpwme0tbg" path="res://assets/Character.svg" id="6_jyopb"]
 [ext_resource type="PackedScene" uid="uid://dlkfrdhtydfb4" path="res://player/pickup_menu.tscn" id="7_25mc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtnh6"]
@@ -157,6 +158,16 @@ texture = ExtResource("5_nusud")
 hframes = 10
 vframes = 10
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TouchScreenButtons/FirstAbilityButton" unique_id=354429504]
+visible = false
+offset_left = -65.0
+offset_top = -65.0
+offset_right = 63.0
+offset_bottom = 63.0
+value = 30.0
+texture_under = ExtResource("6_jyopb")
+texture_progress = ExtResource("2_ehm64")
+
 [node name="SecondAbilityButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1463805035]
 position = Vector2(1656, 393)
 shape = SubResource("RectangleShape2D_25mc0")
@@ -170,6 +181,10 @@ text = "cast spell"
 texture = ExtResource("5_nusud")
 hframes = 10
 vframes = 10
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="TouchScreenButtons/SecondAbilityButton" unique_id=1696028316]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CastSpellButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=1523797098]
 position = Vector2(1705, 620)
@@ -187,6 +202,7 @@ vframes = 10
 frame = 32
 
 [node name="PickUpItemButton" type="TouchScreenButton" parent="TouchScreenButtons" unique_id=761313549]
+visible = false
 position = Vector2(1120, 660)
 shape = SubResource("RectangleShape2D_tjcx7")
 

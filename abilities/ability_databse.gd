@@ -64,4 +64,13 @@ extends Node
 	"class" : "ranger",
 }
 
+@export var precise_strike_ability: Dictionary = {
+	"my_file_path" : "res://abilities/active_abilities/first_abilities/precise_strike_ability.tscn",
+	"logo" : "res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png", # not sure wheter i want it this way
+	"description" : "Temporarily stop your weapon from rotating,\nto assure a precise hit.",
+	"logo_frame" : 75, # or this
+	"type" : 1,
+	"class" : "swashbuckler",
+}
+
 #var all_abilities: Array[Dictionary] = [shadow_clone_ability, fireball_ability, invis_escape_ability]

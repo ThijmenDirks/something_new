@@ -150,6 +150,14 @@ offset_right = 542.0
 offset_bottom = 643.0
 my_ability_name = "favoured_enemy_ability"
 
+[node name="AbilitySelectButton8" parent="SubViewport/AbilitiesNode" unique_id=1059118116 instance=ExtResource("2_pvcxr")]
+layout_mode = 0
+offset_left = -113.0
+offset_top = 517.0
+offset_right = 23.0
+offset_bottom = 653.0
+my_ability_name = "precise_strike_ability"
+
 [node name="Icon" type="Sprite2D" parent="SubViewport/AbilitiesNode" unique_id=725621743]
 visible = false
 position = Vector2(960.25, 541)

@@ -374,5 +374,5 @@ shape = SubResource("CircleShape2D_ebec5")
 
 [connection signal="timeout" from="SpellCastSystem/AimTimer" to="SpellCastSystem" method="_on_aim_timer_timeout"]
 [connection signal="timeout" from="PingTimer" to="." method="_on_ping_timer_timeout"]
-[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
-[connection signal="area_exited" from="PickupArea" to="." method="_on_pickup_area_area_exited"]
+[connection signal="area_entered" from="PickupArea" to="Interface" method="_on_pickup_area_area_entered"]
+[connection signal="area_exited" from="PickupArea" to="Interface" method="_on_pickup_area_area_exited"]

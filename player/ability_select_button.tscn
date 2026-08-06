@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://1tqai0lre2px" path="res://player/ability_select_button.gd" id="1_162jr"]
 [ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_tvclq"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_tvclq"]
+font_size = 20
+
 [node name="AbilitySelectButton" type="TextureButton" unique_id=1214671612]
 offset_right = 136.0
 offset_bottom = 136.0
@@ -28,6 +31,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/PanelContainer" unique_id=441019548]
 layout_mode = 2
 text = "info about the ability"
+label_settings = SubResource("LabelSettings_tvclq")
 
 [node name="UnlockButton" type="Button" parent="VBoxContainer" unique_id=1118793036]
 visible = false
