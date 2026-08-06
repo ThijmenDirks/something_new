@@ -25,6 +25,7 @@ func request_get_used() -> void:
 		return
 
 	if timer.time_left == 0:
+		get_used_verified.rpc()
 		timer.start()
 		var base_damage: int = max_damage + my_owner.strength
 		max_damage = base_damage
@@ -43,7 +44,21 @@ func get_damage_from_angle(angle) -> int:
 
 @rpc("any_peer", "call_local") # but should it be call_local ?
 func get_used_verified() -> void:
+	give_debug_attack_feedback()
 	if not is_multiplayer_authority() or not multiplayer.get_remote_sender_id() == 1:
 		return
 	# play some animation ?
 	timer.start()
+
+func give_debug_attack_feedback():
+	visible = true
+	$Icon2.visible = true
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	$Icon2.visible = false
+	visible = my_owner.is_multiplayer_authority()

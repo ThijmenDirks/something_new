@@ -29,3 +29,9 @@ one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1471518830]
 replication_config = SubResource("SceneReplicationConfig_j23ck")
+
+[node name="Icon2" type="Sprite2D" parent="." unique_id=784499585]
+visible = false
+position = Vector2(93, -1)
+scale = Vector2(0.4609375, 1.796875)
+texture = ExtResource("2_j23ck")

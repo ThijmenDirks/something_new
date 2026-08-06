@@ -1,5 +1,5 @@
-ColorRect
 Sprite2D
+ColorRect
 CollisionShape2D
 StaticBody2D
 Area2D

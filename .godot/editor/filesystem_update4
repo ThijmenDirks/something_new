@@ -11,3 +11,5 @@ res://level.gd
 res://spell_system/spell_databse.gd
 res://player/stats_menu.tscn
 res://items/item_class.gd
+res://items/hand_items/weapons/melee_weapons/melee_weapon.gd
+res://items/hand_items/weapons/melee_weapons/melee_weapon.tscn
