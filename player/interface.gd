@@ -87,7 +87,7 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 	# add the new item to the ground invenotry if there is space left
 	if area is Item:
-		stats_menu.inventory.add_item_to_ground_inventory(area.my_dict)
+		stats_menu.inventory.add_item_to_ground_inventory(area)
 
 
 func _on_pickup_area_area_exited(area: Area2D) -> void:
@@ -96,5 +96,18 @@ func _on_pickup_area_area_exited(area: Area2D) -> void:
 	# then, loop trough the get_overlapping_areas() and add the first item that is not already in ground_inventory
 
 	if area is Item:
-		stats_menu.inventory.ground_area_exited(area)
+		stats_menu.inventory.item_exited(area)
 		#remove_item_from_ground_inventory(area.my_dict)
+
+
+func _on_pickup_area_body_entered(body: Node2D) -> void:
+	if multiplayer.is_server(): # might probably want to only make the area moinitor in the server
+		if body is Item:
+			stats_menu.inventory.body_entered.rpc_id(1, body.my_id)
+			stats_menu.inventory.body_entered.rpc_id(get_multiplayer_authority(), body.my_id)
+
+func _on_pickup_area_body_exited(body: Node2D) -> void:
+	if multiplayer.is_server(): # might probably want to only make the area moinitor in the server
+		if body is Item:
+			stats_menu.inventory.body_exited.rpc_id(1, body.my_id)
+			stats_menu.inventory.body_exited.rpc_id(get_multiplayer_authority(), body.my_id)

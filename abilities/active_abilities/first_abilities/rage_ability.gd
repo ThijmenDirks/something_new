@@ -22,7 +22,7 @@ func request_get_used() -> void:
 
 func get_used_server_side() -> void:
 	is_active = true
-	my_owner.stats_menu.change_stat(0, 5)
+	my_owner.stats_menu.change_stat.rpc(0, 5)
 	duration_timer.start()
 
 @rpc("any_peer", "call_local")
@@ -30,7 +30,7 @@ func get_used_client_side() -> void:
 	if not multiplayer.get_remote_sender_id() == 1:
 		return
 	is_active = true
-	my_owner.stats_menu.change_stat(0, 5)
+	#my_owner.stats_menu.change_stat(0, 5)
 	duration_timer.start()
 	add_label_for_debug()
 	if my_owner.is_multiplayer_authority():

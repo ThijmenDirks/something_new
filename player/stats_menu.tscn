@@ -72,6 +72,7 @@ text = "10"
 label_settings = SubResource("LabelSettings_5d5f4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=2106874380]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -195,59 +196,129 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer" unique_id=896830583]
 layout_mode = 2
+size_flags_vertical = 1
 text = "Ground"
 label_settings = SubResource("LabelSettings_hywm4")
 
-[node name="GroundInventory" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer" unique_id=2067845094]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label" unique_id=829685822]
+layout_mode = 0
+offset_top = 47.0
+offset_right = 717.0
+offset_bottom = 309.0
+
+[node name="HBoxContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer" unique_id=1344911375]
+layout_mode = 2
+
+[node name="GroundInventory" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer" unique_id=2067845094]
 layout_mode = 2
 columns = 5
 
-[node name="InventorySlot" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=355693652 instance=ExtResource("6_13256")]
+[node name="InventorySlot" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=355693652 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot2" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=2032977322 instance=ExtResource("6_13256")]
+[node name="InventorySlot2" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=2032977322 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot3" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=877308165 instance=ExtResource("6_13256")]
+[node name="InventorySlot3" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=877308165 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot4" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=625341445 instance=ExtResource("6_13256")]
+[node name="InventorySlot4" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=625341445 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot5" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=33216738 instance=ExtResource("6_13256")]
+[node name="InventorySlot5" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=33216738 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot6" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=1127847828 instance=ExtResource("6_13256")]
+[node name="InventorySlot6" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1127847828 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot7" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=837187791 instance=ExtResource("6_13256")]
+[node name="InventorySlot7" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=837187791 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot8" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=891609995 instance=ExtResource("6_13256")]
+[node name="InventorySlot8" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=891609995 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot9" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=1372763414 instance=ExtResource("6_13256")]
+[node name="InventorySlot9" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1372763414 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="InventorySlot10" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/GroundInventory" unique_id=1933847546 instance=ExtResource("6_13256")]
+[node name="InventorySlot11" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1613164711 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot12" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1980013579 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot13" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=377544088 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot14" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=474045765 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot15" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=435709839 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot16" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1269663299 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot17" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1162891136 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot18" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1742095109 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot19" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=2000284963 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot20" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1945623336 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot21" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1989085684 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot22" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1971590494 instance=ExtResource("6_13256")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InventorySlot10" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1933847546 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -322,7 +393,7 @@ anchors_preset = 0
 [node name="ColorRect" type="ColorRect" parent="OtherButton/InfoTab" unique_id=757240884]
 layout_mode = 0
 offset_right = 332.0
-offset_bottom = 199.0
+offset_bottom = 260.0
 color = Color(0, 0.14117648, 0.20784314, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OtherButton/InfoTab" unique_id=548815521]
@@ -345,6 +416,16 @@ label_settings = SubResource("LabelSettings_hki1d")
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "equip"
+
+[node name="PickupButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer" unique_id=1375353096]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Pick up"
+
+[node name="DropButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer" unique_id=214619231]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Drop"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=979306035]
 visible = false
@@ -369,3 +450,5 @@ label_settings = SubResource("LabelSettings_ffwu1")
 
 [connection signal="pressed" from="OtherButton/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="OtherButton/LevelUpButton" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/PickupButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_pickup_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/DropButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_drop_button_pressed"]

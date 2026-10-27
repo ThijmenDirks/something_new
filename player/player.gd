@@ -211,9 +211,10 @@ func take_damage_server_side(damage: int, from: Player) -> void:
 	#for the actual damage
 	if not multiplayer.is_server():
 		return
-	damage = ability_handler("take_damage_server_side", [damage, from])[0]
+	#damage = ability_handler("take_damage_server_side", [damage, from])[0]
 	take_damage_client_side.rpc_id(get_multiplayer_authority(), damage)
 	current_hp -= damage
+	stats_menu.current_hp = current_hp
 	update_hp.rpc(current_hp)
 	from.has_done_damage(damage, self)
 	if current_hp <= 0:
@@ -261,8 +262,12 @@ func update_hp(new_hp: int, new_max_hp: int = -1) -> void:
 		return
 	if new_max_hp == 0:
 		max_hp = 1
+		hp_bar.max_value = new_max_hp
 	elif new_max_hp != -1:
 		max_hp = new_max_hp
+		hp_bar.max_value = new_max_hp
+	else:
+		pass
 	current_hp = new_hp
 	hp_bar.value = current_hp
 

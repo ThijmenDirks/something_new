@@ -131,7 +131,7 @@ func change_stat(stat: int, amount: int) -> void:
 		current_hp += amount
 		if current_hp <= 0 and current_hp - amount > 0:
 			current_hp = 1
-		my_owner.update_hp(current_hp)
+		my_owner.update_hp(current_hp, max_hp)
 		if strength <= 0:
 			my_owner.die_server_side()
 	if stat == 1:
@@ -227,3 +227,7 @@ func level_up_client_side() -> void:
 				#target_node.get_child(0).get_removed()
 			#target_node.add_child(new_ability)
 			#new_ability.get_added()
+
+
+func _on_pickup_drop_button_pressed() -> void:
+	pass # Replace with function body.

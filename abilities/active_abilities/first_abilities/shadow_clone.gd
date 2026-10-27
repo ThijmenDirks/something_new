@@ -29,7 +29,7 @@ func update_movement(args: Array) -> void:
 		global_position = args[0]
 		velocity = args[1]
 
-func take_damage_server_side(damage: int) -> void:
+func take_damage_server_side(damage: int, from: Player) -> void:
 	if not multiplayer.is_server():
 		return
 	if damage > 0:

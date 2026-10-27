@@ -1,15 +1,4 @@
-res://abilities/active_abilities/first_abilities/precise_strike_ability.gd
-res://abilities/active_abilities/first_abilities/precise_strike_ability.tscn
+res://player/player.tscn
 res://assets/theme.tres
-res://player/interface.tscn
-res://player/interface.gd
-res://spell_system/spells/cure_light_wounds.tscn
-res://spell_system/spells/cure_light_wounds.gd
+res://player/inventory_slot.gd
 res://player/inventory.gd
-res://level.tscn
-res://level.gd
-res://spell_system/spell_databse.gd
-res://player/stats_menu.tscn
-res://items/item_class.gd
-res://items/hand_items/weapons/melee_weapons/melee_weapon.gd
-res://items/hand_items/weapons/melee_weapons/melee_weapon.tscn

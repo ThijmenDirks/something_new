@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bbb6uhyhkrkuo" path="res://player/player.tscn" id="2_oi3di"]
 [ext_resource type="Texture2D" uid="uid://f423j2srnckj" path="res://assets/Bg.png" id="3_oi3di"]
 [ext_resource type="PackedScene" uid="uid://c8y8erv1pic04" path="res://items/ground_item.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://c516m7ha6076b" path="res://items/scrolls/scroll_of_fireball.tscn" id="5_f2txt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0b4ue"]
 size = Vector2(84.5, 729.5)
@@ -91,9 +92,6 @@ polygon = PackedVector2Array(-2000, -1501, 2000, -1500, 2000, 1500, -2000, 1500,
 
 [node name="XPTimer" type="Timer" parent="." unique_id=1127146812]
 autostart = true
-
-[node name="GroundItem" parent="." unique_id=514298677 instance=ExtResource("4_0b4ue")]
-position = Vector2(4659, 1979)
 
 [node name="Obstacles" type="StaticBody2D" parent="." unique_id=115835404]
 collision_layer = 4
@@ -223,5 +221,13 @@ color = Color(0.2574758, 0.25747576, 0.25747573, 1)
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Obstacles" unique_id=528628669]
 position = Vector2(1337, 2342)
 shape = SubResource("RectangleShape2D_h6smj")
+
+[node name="Items" type="Node" parent="." unique_id=1579976524]
+
+[node name="GroundItem" parent="Items" unique_id=514298677 instance=ExtResource("4_0b4ue")]
+position = Vector2(4667, 1035)
+
+[node name="ScrollOfFireball" parent="Items" unique_id=1318085490 instance=ExtResource("5_f2txt")]
+position = Vector2(666, 455)
 
 [connection signal="timeout" from="XPTimer" to="." method="_on_xp_timer_timeout"]

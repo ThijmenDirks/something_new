@@ -8,7 +8,7 @@ var last_player_hit: Player # or just any creature
 var favoured_enemy: Player
 
 
-var my_area: Area2D
+var my_pointer: Area2D
 
 #func get_added() -> void:
 	#super()
@@ -35,13 +35,9 @@ func request_get_used() -> void:
 func get_used_server_side() -> void:
 	cooldown_timer.start()
 	favoured_enemy = last_player_hit
-	cooldown_timer.start()
-	favoured_enemy = last_player_hit
-	var new_pointer = FAVOURED_ENEMY_POINTER.instantiate()
-	#new_pointer.global_position = my_owner.global_position
-	new_pointer.target = favoured_enemy
-	new_pointer.set_multiplayer_authority(1)
-	my_owner.ability_areas.add_child(new_pointer)
+	#remove_pointer.rpc()
+	#remove_pointer.rpc_id(get_multiplayer_authority())
+	#place_pointer()
 
 @rpc("any_peer", "call_local")
 func get_used_client_side() -> void:
@@ -50,17 +46,31 @@ func get_used_client_side() -> void:
 	#if my_owner.is_multiplayer_authority():
 	cooldown_timer.start()
 	favoured_enemy = last_player_hit
-	var new_pointer = FAVOURED_ENEMY_POINTER.instantiate()
-	#new_pointer.global_position = my_owner.global_position
-	new_pointer.target = favoured_enemy
-	new_pointer.set_multiplayer_authority(1)
-	my_owner.ability_areas.add_child(new_pointer)
+	print("hi")
+	#remove_pointer()
+	place_pointer()
 
+func place_pointer() -> void:
+	my_pointer = FAVOURED_ENEMY_POINTER.instantiate()
+	#my_pointer.global_position = my_owner.global_position
+	my_pointer.target = favoured_enemy
+	my_pointer.set_multiplayer_authority(my_owner.get_multiplayer_authority())
+	my_owner.ability_areas.add_child(my_pointer)
 
+@rpc("any_peer", "call_local")
+func remove_pointer():
+	if not multiplayer.get_remote_sender_id() == 1 or not my_owner.is_multiplayer_authority():
+		return
+	if is_instance_valid(my_pointer):
+		push_warning("test 1")
+		my_owner.ability_areas.remove_child(my_pointer)
+		push_warning("test 2")
+		my_pointer.queue_free()
+		push_warning("test 3")
 
-#func get_removed() -> void:
-	#remove_area.rpc()
-#
+func get_removed() -> void:
+	remove_pointer.rpc()
+
 #@rpc("any_peer", "call_local")
 #func remove_area() -> void:
 	#if not multiplayer.get_remote_sender_id() == 1:
