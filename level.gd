@@ -58,10 +58,10 @@ func set_item_ids() -> void:
 
 
 func _on_xp_timer_timeout() -> void:
-	print("authoro? ", multiplayer.is_server())
+	#print("authoro? ", multiplayer.is_server())
 	for player: Player in players.get_children():
 		player.stats_menu.gain_xp.rpc(202)
 		#player.stats_menu.current_hp -= 2
 		#print("test 1")
 		#player.take_damage_server_side(5, player)
-	print("everyone got xp !")
+	#print("everyone got xp !")

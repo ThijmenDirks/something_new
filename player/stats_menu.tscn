@@ -213,7 +213,7 @@ layout_mode = 2
 layout_mode = 2
 columns = 5
 
-[node name="InventorySlot" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=355693652 instance=ExtResource("6_13256")]
+[node name="InventorySlot" parent="MarginContainer/HBoxContainer/VBoxContainer/Inventory/VBoxContainer/Label/PanelContainer/HBoxContainer/GroundInventory" unique_id=1535327625 instance=ExtResource("6_13256")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -387,8 +387,11 @@ offset_bottom = 817.0
 text = "Level up"
 
 [node name="InfoTab" type="Control" parent="OtherButton" unique_id=558797464]
-visible = false
 anchors_preset = 0
+offset_left = 790.0
+offset_top = 310.0
+offset_right = 790.0
+offset_bottom = 310.0
 
 [node name="ColorRect" type="ColorRect" parent="OtherButton/InfoTab" unique_id=757240884]
 layout_mode = 0
@@ -415,7 +418,7 @@ label_settings = SubResource("LabelSettings_hki1d")
 [node name="UseButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer" unique_id=384311876]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "equip"
+text = "Use"
 
 [node name="PickupButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer" unique_id=1375353096]
 layout_mode = 2
@@ -426,6 +429,24 @@ text = "Pick up"
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Drop"
+
+[node name="EquipArmorButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer" unique_id=2027977717]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Equip"
+
+[node name="EquipHandButtons" type="HBoxContainer" parent="OtherButton/InfoTab/VBoxContainer" unique_id=2088500131]
+layout_mode = 2
+
+[node name="EquipLeftButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer/EquipHandButtons" unique_id=47688527]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Equip left"
+
+[node name="EquipRightButton" type="Button" parent="OtherButton/InfoTab/VBoxContainer/EquipHandButtons" unique_id=76901494]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Equip right"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=979306035]
 visible = false
@@ -450,5 +471,9 @@ label_settings = SubResource("LabelSettings_ffwu1")
 
 [connection signal="pressed" from="OtherButton/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="OtherButton/LevelUpButton" to="." method="_on_level_up_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/UseButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_use_button_pressed"]
 [connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/PickupButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_pickup_button_pressed"]
 [connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/DropButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_drop_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/EquipArmorButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_equip_armor_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/EquipHandButtons/EquipLeftButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_equip_left_button_pressed"]
+[connection signal="pressed" from="OtherButton/InfoTab/VBoxContainer/EquipHandButtons/EquipRightButton" to="MarginContainer/HBoxContainer/VBoxContainer/Inventory" method="_on_equip_right_button_pressed"]

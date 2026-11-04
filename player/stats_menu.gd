@@ -15,7 +15,7 @@ extends Control
 @export_category("")
 
 var is_leveling: bool = false
-
+var is_in_stats_menu: bool = false
 var inventory_items: Array[Item] # now has its own script
 
 @onready var my_owner: Player = get_parent().get_parent()
@@ -27,14 +27,25 @@ func _enter_tree() -> void:
 	#my_owner = get_parent().get_parent()
 	pass
 
-func setup():
+func enter():
 	#get_items_from_server.rpc_id(1)
 	if pending_levels:
 		set_levelup_button_visibility(true)
 	else:
 		set_levelup_button_visibility(false)
-	inventory.setup()
+	is_in_stats_menu = true
+	inventory.enter()
 	visible = true
+
+@rpc("call_local")
+func exit():
+	if (not is_multiplayer_authority()) and (not multiplayer.is_server()):
+		return
+	is_in_stats_menu = false
+	inventory.exit()
+	visible = false
+	is_leveling = false
+	get_parent().exit_stats_menu()
 
 
 #@rpc("any_peer", "call_local")
@@ -169,16 +180,8 @@ func change_pending_levels(amount: int):
 
 
 func _on_back_button_pressed() -> void:
-	close.rpc_id(1)
-	close()
-
-@rpc("call_local")
-func close():
-	if (not is_multiplayer_authority()) and (not multiplayer.is_server()):
-		return
-	visible = false
-	is_leveling = false
-	get_parent().exit_stats_menu()
+	exit.rpc_id(1)
+	exit()
 
 func _on_level_up_button_pressed() -> void:
 	request_level_up.rpc_id(1)

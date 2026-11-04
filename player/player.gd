@@ -29,6 +29,7 @@ class_name Player extends CharacterBody2D
 @onready var stats_menu: Control = $Interface/StatsMenu
 @onready var right_hand_node: Node2D = $Items/RightHand
 @onready var left_hand_node: Node2D = $Items/LeftHand
+@onready var armor_node: Node2D = $Items/Armor
 @onready var first_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/FirstAbility#$Abilities/FirstAbility
 @onready var second_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/SecondAbility
 @onready var passive_ability_node: Control = $Interface/StatsMenu/MarginContainer/HBoxContainer/Classtuff/SelectedClasses/HBoxContainer/PassiveAbility

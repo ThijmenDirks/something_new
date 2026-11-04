@@ -76,36 +76,45 @@ func _on_cast_spell_button_pressed() -> void:
 func _on_stats_menu_button_pressed() -> void:
 	is_in_stats_menu = true
 	joystick.visible = false
-	stats_menu.setup()
+	stats_menu.enter()
 
+# is this func used ? it is
 func exit_stats_menu():
 	is_in_stats_menu = false
 	joystick.visible = true
 
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+	# only gets called at server
 	# add the new item to the ground invenotry if there is space left
 	if area is Item:
-		stats_menu.inventory.add_item_to_ground_inventory(area)
-
+		if stats_menu.is_in_stats_menu:
+			stats_menu.inventory.item_entered(area.my_id)
+			if not multiplayer.is_server():
+				stats_menu.inventory.item_entered.rpc_id(get_multiplayer_authority(), area.my_id)
+			#stats_menu.inventory.add_item_to_ground_inventory(area)
 
 func _on_pickup_area_area_exited(area: Area2D) -> void:
-	pass # Replace with function body.
 	# remove the item from the ground inventory.
 	# then, loop trough the get_overlapping_areas() and add the first item that is not already in ground_inventory
-
 	if area is Item:
-		stats_menu.inventory.item_exited(area)
+		if stats_menu.is_in_stats_menu:
+			stats_menu.inventory.item_exited(area.my_id)
+			if not multiplayer.is_server():
+				stats_menu.inventory.item_exited.rpc_id(1, area.my_id)
 		#remove_item_from_ground_inventory(area.my_dict)
 
 
+
+
+# DEPRECATED
 func _on_pickup_area_body_entered(body: Node2D) -> void:
 	if multiplayer.is_server(): # might probably want to only make the area moinitor in the server
 		if body is Item:
 			stats_menu.inventory.body_entered.rpc_id(1, body.my_id)
 			stats_menu.inventory.body_entered.rpc_id(get_multiplayer_authority(), body.my_id)
 
+# DEPRECATED
 func _on_pickup_area_body_exited(body: Node2D) -> void:
 	if multiplayer.is_server(): # might probably want to only make the area moinitor in the server
 		if body is Item:

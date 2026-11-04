@@ -28,15 +28,15 @@ frame = 90
 layout_mode = 2
 flat = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1260621577]
+[node name="VBoxContainerDEPRECATED" type="VBoxContainer" parent="." unique_id=1260621577]
 visible = false
 layout_mode = 2
 
-[node name="UseButton" type="Button" parent="VBoxContainer" unique_id=1878475297]
+[node name="UseButton" type="Button" parent="VBoxContainerDEPRECATED" unique_id=1878475297]
 layout_mode = 2
 text = "use"
 
-[node name="PickDropButton" type="Button" parent="VBoxContainer" unique_id=1093242933]
+[node name="PickDropButton" type="Button" parent="VBoxContainerDEPRECATED" unique_id=1093242933]
 layout_mode = 2
 text = "pick/drop"
 

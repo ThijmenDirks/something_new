@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://3obs1yoyn8lm"]
+
+[ext_resource type="Script" uid="uid://doogqcbx0wcuh" path="res://items/armor/full_plate.gd" id="1_luod5"]
+[ext_resource type="Texture2D" uid="uid://3gka5hyveh1t" path="res://assets/100-ability-icons-v0-i8bs7g98z7gf1.png" id="2_ns5m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qu0u"]
+size = Vector2(13, 13)
+
+[node name="FullPlate" type="Area2D" unique_id=467858273]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_luod5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1483622333]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ns5m6")
+hframes = 10
+vframes = 10
+frame = 56
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445378253]
+shape = SubResource("RectangleShape2D_5qu0u")

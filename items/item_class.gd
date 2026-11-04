@@ -2,8 +2,10 @@ class_name Item extends Area2D # Might gonna extend something else, in which cas
 
 #var my_owner: Node
 #@export var my_dic: Dictionary # not sure wheter this will be used. it wont
-@onready var my_owner: Player# = get_parent().get_parent().get_parent()
-@export var my_id: int # also used asname
+
+var my_owner: Node# = get_parent().get_parent().get_parent()
+
+@export var my_id: int # also used as name
 @export var description: String
 @export var sprite_frame: int
 
@@ -16,12 +18,14 @@ class_name Item extends Area2D # Might gonna extend something else, in which cas
 		#generate_id()
 
 func _enter_tree() -> void:
-	my_owner = get_parent().get_parent().get_parent()
-	if is_instance_valid(my_owner):
-		set_multiplayer_authority(my_owner.get_multiplayer_authority())
+	pass
+	#my_owner = get_parent().get_parent().get_parent()
+	#if is_instance_valid(my_owner):
+		#set_multiplayer_authority(my_owner.get_multiplayer_authority())
 
 func get_picked_up() -> void:
 	pass
+	#my_owner = get_parent().get_parent().get_parent()
 
 #func generate_id() -> void:
 	#var new_id: int

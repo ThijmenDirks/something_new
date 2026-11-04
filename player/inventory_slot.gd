@@ -35,8 +35,6 @@ func set_item(item: Item) -> void:
 		sprite_2d.frame = 90
 
 
-
-
-
 func _on_button_pressed() -> void:
+	# make a bool "is_picking_or_dropping" to check wheter this item is being selected or being swapped with
 	my_inventory.set_selected_item(my_item)
